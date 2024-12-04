@@ -28,10 +28,10 @@ reg [127:0] data_out;
 reg [127:0] key;
 
 //Bat_drv============================
-wire [3:0] push;
+wire [2:0] push;
 
-reg [3:0] but_r;
-reg [3:0] but_rr;
+reg [2:0] but_r;
+reg [2:0] but_rr;
 
 assign push = but_rr & ~but_r;
 
@@ -40,7 +40,7 @@ wire rigt = push[1];
 wire set  = push[2];
 
 always @(posedge clk) begin
-	  //but_r <= but_1;
+	  but_r <= bat;
 	  but_rr <= but_r;
 end
 //===================================
@@ -49,27 +49,27 @@ end
 reg [2:0] pos;
 
 always @(posedge clk) begin
-    if(reset) begin
-        pos = 4'b0;
-    end else if (left & ~rigt & ~set)
-        pos = pos + 1;
+    if(~reset)
+        pos <= 3'b0;
+    else if (left & ~rigt & ~set)
+        pos <= pos + 1;
     else if (~left & rigt & ~set)
-        pos = pos - 1;
+        pos <= pos - 1;
 end
 //===================================
 
 //data_in============================
-wire full_pos = (gl_pos_data << 3 + pos) << 4;
+wire [$clog2(128):0]full_pos = ((gl_pos_data << 3) + pos) << 2;
 
-wire [127:0] mask = 128'b1111 << full_pos; 
+wire [127:0] mask = 128'hF << full_pos; 
 
-wire [3:0]   L_new_data = {121'b0, data_wire};
+wire [127:0]   L_new_data = { 4*8{data_wire}};
 
-wire [127:0] new_data = (data_in & ~mask) | L_new_data; 
+wire [127:0] new_data = (data_in & ~mask) | (L_new_data & mask); 
 
 always @(posedge clk) begin
-    if(reset) begin
-        data_in <= 128'b0;
+    if(~reset) begin
+        data_in <= 128'h0000000A0000000B0000000C0000000D;
     end else if(set)
         data_in <= new_data;
 end
@@ -77,7 +77,7 @@ end
 
 //===================================
 wire [127:0] data = data_in;
-wire [31:0] shift = (gl_pos_data << 7) ;
+wire [31:0] shift = (gl_pos_data << 5) ;
 
 wire [6:0] A_3seg7_pre;
 wire [6:0] A_2seg7_pre;
@@ -112,7 +112,7 @@ assign B_3seg7 = B_3seg7_pre;
 //===================================
 
 always @(posedge clk) begin
-    if(reset) begin
+    if(~reset) begin
         data_out <= 128'b0;
         key      <= 128'b0;
     end
