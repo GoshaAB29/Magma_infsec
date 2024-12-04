@@ -40,7 +40,7 @@ wire rigt = push[1];
 wire set  = push[2];
 
 always @(posedge clk) begin
-	  but_r <= but_1;
+	  //but_r <= but_1;
 	  but_rr <= but_r;
 end
 //===================================
@@ -89,15 +89,15 @@ wire [6:0] B_2seg7_pre;
 wire [6:0] B_1seg7_pre;
 wire [6:0] B_0seg7_pre;
 
-hex_to_7seg ht70a ((data >> shift) >> 0, A_0seg7_pre);
-hex_to_7seg ht71a ((data >> shift) >> 4, A_0seg7_pre);
-hex_to_7seg ht72a ((data >> shift) >> 8, A_0seg7_pre);
-hex_to_7seg ht73a ((data >> shift) >> 12, A_0seg7_pre);
+hex_to_7seg ht70a ((data >> shift) >> 0,  A_0seg7_pre);
+hex_to_7seg ht71a ((data >> shift) >> 4,  A_1seg7_pre);
+hex_to_7seg ht72a ((data >> shift) >> 8,  A_2seg7_pre);
+hex_to_7seg ht73a ((data >> shift) >> 12, A_3seg7_pre);
 
 hex_to_7seg ht70b ((data >> shift) >> 16, B_0seg7_pre);
-hex_to_7seg ht71b ((data >> shift) >> 20, B_0seg7_pre);
-hex_to_7seg ht72b ((data >> shift) >> 24, B_0seg7_pre);
-hex_to_7seg ht73b ((data >> shift) >> 28, B_0seg7_pre);
+hex_to_7seg ht71b ((data >> shift) >> 20, B_1seg7_pre);
+hex_to_7seg ht72b ((data >> shift) >> 24, B_2seg7_pre);
+hex_to_7seg ht73b ((data >> shift) >> 28, B_3seg7_pre);
 
 assign A_0seg7 = A_0seg7_pre;
 assign A_1seg7 = A_1seg7_pre;
