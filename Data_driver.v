@@ -1,7 +1,7 @@
-module driver(
+module Data_driver(
     input wire but_1,
     input wire clk,
-	input wire reset,
+    input wire reset,
     output wire s_led,
 
     input wire [3:0] data_wire,
@@ -17,7 +17,7 @@ module driver(
     output wire [6:0] A_1seg7,
     output wire [6:0] A_0seg7,
 	 
-	output wire [6:0] B_3seg7,
+    output wire [6:0] B_3seg7,
     output wire [6:0] B_2seg7,
     output wire [6:0] B_1seg7,
     output wire [6:0] B_0seg7
