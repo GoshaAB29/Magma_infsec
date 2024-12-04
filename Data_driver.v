@@ -1,5 +1,4 @@
 module Data_driver(
-    input wire but_1,
     input wire clk,
     input wire reset,
     output wire s_led,
@@ -7,7 +6,7 @@ module Data_driver(
     input wire [3:0] data_wire,
     input wire [3:0] gl_pos_data,
 
-    input wire [3:0] bat,
+    input wire [2:0] bat,
 
     output wire [3:0] Gr_pos_led,
     output wire [8:0] L_pos_led,
@@ -145,7 +144,7 @@ assign seg7 = (hex == 4'h0)? ~7'b0_111_111:
               (hex == 4'hc)? ~7'b0_111_001:
               (hex == 4'hd)? ~7'b1_011_110:
               (hex == 4'he)? ~7'b1_111_001:
-				  (hex == 4'hf)? ~7'b1_110_001:
-				  ~7'b0_000_000;
+              (hex == 4'hf)? ~7'b1_110_001:
+			     ~7'b0_000_000;
 
 endmodule
