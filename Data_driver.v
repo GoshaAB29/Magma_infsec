@@ -100,6 +100,16 @@ hex_to_7seg ht71b ((data >> shift) >> 20, B_0seg7_pre);
 hex_to_7seg ht72b ((data >> shift) >> 24, B_0seg7_pre);
 hex_to_7seg ht73b ((data >> shift) >> 28, B_0seg7_pre);
 
+assign A_0seg7 = A_0seg7_pre;
+assign A_1seg7 = A_1seg7_pre;
+assign A_2seg7 = A_2seg7_pre;
+assign A_3seg7 = A_3seg7_pre;
+
+assign B_0seg7 = B_0seg7_pre;
+assign B_1seg7 = B_1seg7_pre;
+assign B_2seg7 = B_2seg7_pre;
+assign B_3seg7 = B_3seg7_pre;
+
 //===================================
 
 always @(posedge clk) begin
