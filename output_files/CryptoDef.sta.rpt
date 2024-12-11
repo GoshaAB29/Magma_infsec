@@ -1,5 +1,5 @@
 Timing Analyzer report for CryptoDef
-Wed Dec 11 19:34:34 2024
+Wed Dec 11 20:32:40 2024
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -99,12 +99,13 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 12          ;
 ; Maximum allowed            ; 12          ;
 ;                            ;             ;
-; Average used               ; 1.11        ;
+; Average used               ; 1.12        ;
 ; Maximum used               ; 12          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-12        ;   1.0%      ;
+;     Processor 2            ;   1.1%      ;
+;     Processors 3-12        ;   1.1%      ;
 +----------------------------+-------------+
 
 
@@ -117,13 +118,13 @@ https://fpgasoftware.intel.com/eula.
 +------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
 
 
-+-----------------------------------------------------------------------------------------------------------+
-; Slow 1200mV 85C Model Fmax Summary                                                                        ;
-+------------+-----------------+------------+---------------------------------------------------------------+
-; Fmax       ; Restricted Fmax ; Clock Name ; Note                                                          ;
-+------------+-----------------+------------+---------------------------------------------------------------+
-; 295.16 MHz ; 250.0 MHz       ; clk        ; limit due to minimum period restriction (max I/O toggle rate) ;
-+------------+-----------------+------------+---------------------------------------------------------------+
++--------------------------------------------------+
+; Slow 1200mV 85C Model Fmax Summary               ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 151.63 MHz ; 151.63 MHz      ; clk        ;      ;
++------------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
@@ -138,7 +139,7 @@ HTML report is unavailable in plain text report export.
 +-------+--------+--------------------+
 ; Clock ; Slack  ; End Point TNS      ;
 +-------+--------+--------------------+
-; clk   ; -2.388 ; -892.031           ;
+; clk   ; -5.595 ; -2011.025          ;
 +-------+--------+--------------------+
 
 
@@ -168,116 +169,116 @@ No paths to report.
 +-------+--------+----------------------------------+
 ; Clock ; Slack  ; End Point TNS                    ;
 +-------+--------+----------------------------------+
-; clk   ; -3.000 ; -713.605                         ;
+; clk   ; -3.000 ; -836.965                         ;
 +-------+--------+----------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------+
-; Slow 1200mV 85C Model Setup: 'clk'                                                                                             ;
-+--------+----------------------+--------------------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node            ; To Node                  ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+----------------------+--------------------------+--------------+-------------+--------------+------------+------------+
-; -2.388 ; magma:MAGMA|round[1] ; magma:MAGMA|left[20]     ; clk          ; clk         ; 1.000        ; -0.064     ; 3.322      ;
-; -2.388 ; magma:MAGMA|round[1] ; magma:MAGMA|right[20]    ; clk          ; clk         ; 1.000        ; -0.064     ; 3.322      ;
-; -2.379 ; magma:MAGMA|round[3] ; magma:MAGMA|left[20]     ; clk          ; clk         ; 1.000        ; -0.064     ; 3.313      ;
-; -2.379 ; magma:MAGMA|round[3] ; magma:MAGMA|right[20]    ; clk          ; clk         ; 1.000        ; -0.064     ; 3.313      ;
-; -2.338 ; magma:MAGMA|round[1] ; magma:MAGMA|left[27]     ; clk          ; clk         ; 1.000        ; -0.065     ; 3.271      ;
-; -2.338 ; magma:MAGMA|round[1] ; magma:MAGMA|right[27]    ; clk          ; clk         ; 1.000        ; -0.065     ; 3.271      ;
-; -2.338 ; magma:MAGMA|round[1] ; magma:MAGMA|left[26]     ; clk          ; clk         ; 1.000        ; -0.065     ; 3.271      ;
-; -2.338 ; magma:MAGMA|round[1] ; magma:MAGMA|right[26]    ; clk          ; clk         ; 1.000        ; -0.065     ; 3.271      ;
-; -2.329 ; magma:MAGMA|round[3] ; magma:MAGMA|left[27]     ; clk          ; clk         ; 1.000        ; -0.065     ; 3.262      ;
-; -2.329 ; magma:MAGMA|round[3] ; magma:MAGMA|right[27]    ; clk          ; clk         ; 1.000        ; -0.065     ; 3.262      ;
-; -2.329 ; magma:MAGMA|round[3] ; magma:MAGMA|left[26]     ; clk          ; clk         ; 1.000        ; -0.065     ; 3.262      ;
-; -2.329 ; magma:MAGMA|round[3] ; magma:MAGMA|right[26]    ; clk          ; clk         ; 1.000        ; -0.065     ; 3.262      ;
-; -2.309 ; magma:MAGMA|round[1] ; magma:MAGMA|left[16]     ; clk          ; clk         ; 1.000        ; -0.060     ; 3.247      ;
-; -2.309 ; magma:MAGMA|round[1] ; magma:MAGMA|right[16]    ; clk          ; clk         ; 1.000        ; -0.060     ; 3.247      ;
-; -2.308 ; magma:MAGMA|round[1] ; magma:MAGMA|left[2]      ; clk          ; clk         ; 1.000        ; -0.061     ; 3.245      ;
-; -2.308 ; magma:MAGMA|round[1] ; magma:MAGMA|right[2]     ; clk          ; clk         ; 1.000        ; -0.061     ; 3.245      ;
-; -2.300 ; magma:MAGMA|round[3] ; magma:MAGMA|left[16]     ; clk          ; clk         ; 1.000        ; -0.060     ; 3.238      ;
-; -2.300 ; magma:MAGMA|round[3] ; magma:MAGMA|right[16]    ; clk          ; clk         ; 1.000        ; -0.060     ; 3.238      ;
-; -2.299 ; magma:MAGMA|round[1] ; magma:MAGMA|left[22]     ; clk          ; clk         ; 1.000        ; -0.078     ; 3.219      ;
-; -2.299 ; magma:MAGMA|round[1] ; magma:MAGMA|right[22]    ; clk          ; clk         ; 1.000        ; -0.078     ; 3.219      ;
-; -2.299 ; magma:MAGMA|round[1] ; magma:MAGMA|left[31]     ; clk          ; clk         ; 1.000        ; -0.068     ; 3.229      ;
-; -2.299 ; magma:MAGMA|round[1] ; magma:MAGMA|right[31]    ; clk          ; clk         ; 1.000        ; -0.068     ; 3.229      ;
-; -2.299 ; magma:MAGMA|round[3] ; magma:MAGMA|left[2]      ; clk          ; clk         ; 1.000        ; -0.061     ; 3.236      ;
-; -2.299 ; magma:MAGMA|round[3] ; magma:MAGMA|right[2]     ; clk          ; clk         ; 1.000        ; -0.061     ; 3.236      ;
-; -2.290 ; magma:MAGMA|round[3] ; magma:MAGMA|left[22]     ; clk          ; clk         ; 1.000        ; -0.078     ; 3.210      ;
-; -2.290 ; magma:MAGMA|round[3] ; magma:MAGMA|right[22]    ; clk          ; clk         ; 1.000        ; -0.078     ; 3.210      ;
-; -2.290 ; magma:MAGMA|round[3] ; magma:MAGMA|left[31]     ; clk          ; clk         ; 1.000        ; -0.068     ; 3.220      ;
-; -2.290 ; magma:MAGMA|round[3] ; magma:MAGMA|right[31]    ; clk          ; clk         ; 1.000        ; -0.068     ; 3.220      ;
-; -2.280 ; magma:MAGMA|round[1] ; magma:MAGMA|left[29]     ; clk          ; clk         ; 1.000        ; -0.054     ; 3.224      ;
-; -2.280 ; magma:MAGMA|round[1] ; magma:MAGMA|right[29]    ; clk          ; clk         ; 1.000        ; -0.054     ; 3.224      ;
-; -2.271 ; magma:MAGMA|round[3] ; magma:MAGMA|left[29]     ; clk          ; clk         ; 1.000        ; -0.054     ; 3.215      ;
-; -2.271 ; magma:MAGMA|round[3] ; magma:MAGMA|right[29]    ; clk          ; clk         ; 1.000        ; -0.054     ; 3.215      ;
-; -2.249 ; magma:MAGMA|round[1] ; magma:MAGMA|left[23]     ; clk          ; clk         ; 1.000        ; -0.086     ; 3.161      ;
-; -2.249 ; magma:MAGMA|round[1] ; magma:MAGMA|right[23]    ; clk          ; clk         ; 1.000        ; -0.086     ; 3.161      ;
-; -2.249 ; magma:MAGMA|round[1] ; magma:MAGMA|left[10]     ; clk          ; clk         ; 1.000        ; -0.086     ; 3.161      ;
-; -2.249 ; magma:MAGMA|round[1] ; magma:MAGMA|right[10]    ; clk          ; clk         ; 1.000        ; -0.086     ; 3.161      ;
-; -2.249 ; magma:MAGMA|round[1] ; magma:MAGMA|left[11]     ; clk          ; clk         ; 1.000        ; -0.086     ; 3.161      ;
-; -2.249 ; magma:MAGMA|round[1] ; magma:MAGMA|right[11]    ; clk          ; clk         ; 1.000        ; -0.086     ; 3.161      ;
-; -2.249 ; magma:MAGMA|round[1] ; magma:MAGMA|left[14]     ; clk          ; clk         ; 1.000        ; -0.086     ; 3.161      ;
-; -2.249 ; magma:MAGMA|round[1] ; magma:MAGMA|right[14]    ; clk          ; clk         ; 1.000        ; -0.086     ; 3.161      ;
-; -2.240 ; magma:MAGMA|round[3] ; magma:MAGMA|left[23]     ; clk          ; clk         ; 1.000        ; -0.086     ; 3.152      ;
-; -2.240 ; magma:MAGMA|round[3] ; magma:MAGMA|right[23]    ; clk          ; clk         ; 1.000        ; -0.086     ; 3.152      ;
-; -2.240 ; magma:MAGMA|round[3] ; magma:MAGMA|left[10]     ; clk          ; clk         ; 1.000        ; -0.086     ; 3.152      ;
-; -2.240 ; magma:MAGMA|round[3] ; magma:MAGMA|right[10]    ; clk          ; clk         ; 1.000        ; -0.086     ; 3.152      ;
-; -2.240 ; magma:MAGMA|round[3] ; magma:MAGMA|left[11]     ; clk          ; clk         ; 1.000        ; -0.086     ; 3.152      ;
-; -2.240 ; magma:MAGMA|round[3] ; magma:MAGMA|right[11]    ; clk          ; clk         ; 1.000        ; -0.086     ; 3.152      ;
-; -2.240 ; magma:MAGMA|round[3] ; magma:MAGMA|left[14]     ; clk          ; clk         ; 1.000        ; -0.086     ; 3.152      ;
-; -2.240 ; magma:MAGMA|round[3] ; magma:MAGMA|right[14]    ; clk          ; clk         ; 1.000        ; -0.086     ; 3.152      ;
-; -2.199 ; magma:MAGMA|round[2] ; magma:MAGMA|left[20]     ; clk          ; clk         ; 1.000        ; -0.064     ; 3.133      ;
-; -2.199 ; magma:MAGMA|round[2] ; magma:MAGMA|right[20]    ; clk          ; clk         ; 1.000        ; -0.064     ; 3.133      ;
-; -2.167 ; magma:MAGMA|round[1] ; magma:MAGMA|left[17]     ; clk          ; clk         ; 1.000        ; -0.075     ; 3.090      ;
-; -2.167 ; magma:MAGMA|round[1] ; magma:MAGMA|right[17]    ; clk          ; clk         ; 1.000        ; -0.075     ; 3.090      ;
-; -2.160 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[16] ; clk          ; clk         ; 1.000        ; -0.060     ; 3.098      ;
-; -2.160 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[16] ; clk          ; clk         ; 1.000        ; -0.060     ; 3.098      ;
-; -2.158 ; magma:MAGMA|round[3] ; magma:MAGMA|left[17]     ; clk          ; clk         ; 1.000        ; -0.075     ; 3.081      ;
-; -2.158 ; magma:MAGMA|round[3] ; magma:MAGMA|right[17]    ; clk          ; clk         ; 1.000        ; -0.075     ; 3.081      ;
-; -2.149 ; magma:MAGMA|round[2] ; magma:MAGMA|left[27]     ; clk          ; clk         ; 1.000        ; -0.065     ; 3.082      ;
-; -2.149 ; magma:MAGMA|round[2] ; magma:MAGMA|right[27]    ; clk          ; clk         ; 1.000        ; -0.065     ; 3.082      ;
-; -2.149 ; magma:MAGMA|round[2] ; magma:MAGMA|left[26]     ; clk          ; clk         ; 1.000        ; -0.065     ; 3.082      ;
-; -2.149 ; magma:MAGMA|round[2] ; magma:MAGMA|right[26]    ; clk          ; clk         ; 1.000        ; -0.065     ; 3.082      ;
-; -2.120 ; magma:MAGMA|round[2] ; magma:MAGMA|left[16]     ; clk          ; clk         ; 1.000        ; -0.060     ; 3.058      ;
-; -2.120 ; magma:MAGMA|round[2] ; magma:MAGMA|right[16]    ; clk          ; clk         ; 1.000        ; -0.060     ; 3.058      ;
-; -2.119 ; magma:MAGMA|round[2] ; magma:MAGMA|left[2]      ; clk          ; clk         ; 1.000        ; -0.061     ; 3.056      ;
-; -2.119 ; magma:MAGMA|round[2] ; magma:MAGMA|right[2]     ; clk          ; clk         ; 1.000        ; -0.061     ; 3.056      ;
-; -2.110 ; magma:MAGMA|round[2] ; magma:MAGMA|left[22]     ; clk          ; clk         ; 1.000        ; -0.078     ; 3.030      ;
-; -2.110 ; magma:MAGMA|round[2] ; magma:MAGMA|right[22]    ; clk          ; clk         ; 1.000        ; -0.078     ; 3.030      ;
-; -2.110 ; magma:MAGMA|round[2] ; magma:MAGMA|left[31]     ; clk          ; clk         ; 1.000        ; -0.068     ; 3.040      ;
-; -2.110 ; magma:MAGMA|round[2] ; magma:MAGMA|right[31]    ; clk          ; clk         ; 1.000        ; -0.068     ; 3.040      ;
-; -2.106 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[48] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.029      ;
-; -2.106 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[28] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.029      ;
-; -2.106 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[63] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.029      ;
-; -2.106 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[48] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.029      ;
-; -2.106 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[28] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.029      ;
-; -2.106 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[63] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.029      ;
-; -2.091 ; magma:MAGMA|round[2] ; magma:MAGMA|left[29]     ; clk          ; clk         ; 1.000        ; -0.054     ; 3.035      ;
-; -2.091 ; magma:MAGMA|round[2] ; magma:MAGMA|right[29]    ; clk          ; clk         ; 1.000        ; -0.054     ; 3.035      ;
-; -2.088 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[49] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.011      ;
-; -2.088 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[17] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.011      ;
-; -2.088 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[29] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.011      ;
-; -2.088 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[49] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.011      ;
-; -2.088 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[17] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.011      ;
-; -2.088 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[29] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.011      ;
-; -2.087 ; but_r[0]             ; pos[2]                   ; clk          ; clk         ; 1.000        ; -0.071     ; 3.014      ;
-; -2.087 ; but_r[0]             ; pos[1]                   ; clk          ; clk         ; 1.000        ; -0.071     ; 3.014      ;
-; -2.087 ; but_r[0]             ; pos[0]                   ; clk          ; clk         ; 1.000        ; -0.071     ; 3.014      ;
-; -2.083 ; magma:MAGMA|round[1] ; magma:MAGMA|left[7]      ; clk          ; clk         ; 1.000        ; -0.052     ; 3.029      ;
-; -2.083 ; magma:MAGMA|round[1] ; magma:MAGMA|right[7]     ; clk          ; clk         ; 1.000        ; -0.052     ; 3.029      ;
-; -2.074 ; magma:MAGMA|round[3] ; magma:MAGMA|left[7]      ; clk          ; clk         ; 1.000        ; -0.052     ; 3.020      ;
-; -2.074 ; magma:MAGMA|round[3] ; magma:MAGMA|right[7]     ; clk          ; clk         ; 1.000        ; -0.052     ; 3.020      ;
-; -2.071 ; magma:MAGMA|round[0] ; magma:MAGMA|left[20]     ; clk          ; clk         ; 1.000        ; -0.064     ; 3.005      ;
-; -2.071 ; magma:MAGMA|round[0] ; magma:MAGMA|right[20]    ; clk          ; clk         ; 1.000        ; -0.064     ; 3.005      ;
-; -2.060 ; magma:MAGMA|round[2] ; magma:MAGMA|left[23]     ; clk          ; clk         ; 1.000        ; -0.086     ; 2.972      ;
-; -2.060 ; magma:MAGMA|round[2] ; magma:MAGMA|right[23]    ; clk          ; clk         ; 1.000        ; -0.086     ; 2.972      ;
-; -2.060 ; magma:MAGMA|round[2] ; magma:MAGMA|left[10]     ; clk          ; clk         ; 1.000        ; -0.086     ; 2.972      ;
-; -2.060 ; magma:MAGMA|round[2] ; magma:MAGMA|right[10]    ; clk          ; clk         ; 1.000        ; -0.086     ; 2.972      ;
-; -2.060 ; magma:MAGMA|round[2] ; magma:MAGMA|left[11]     ; clk          ; clk         ; 1.000        ; -0.086     ; 2.972      ;
-; -2.060 ; magma:MAGMA|round[2] ; magma:MAGMA|right[11]    ; clk          ; clk         ; 1.000        ; -0.086     ; 2.972      ;
-; -2.060 ; magma:MAGMA|round[2] ; magma:MAGMA|left[14]     ; clk          ; clk         ; 1.000        ; -0.086     ; 2.972      ;
-; -2.060 ; magma:MAGMA|round[2] ; magma:MAGMA|right[14]    ; clk          ; clk         ; 1.000        ; -0.086     ; 2.972      ;
-; -2.057 ; magma:MAGMA|round[1] ; magma:MAGMA|left[25]     ; clk          ; clk         ; 1.000        ; -0.058     ; 2.997      ;
-+--------+----------------------+--------------------------+--------------+-------------+--------------+------------+------------+
++----------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Setup: 'clk'                                                                                         ;
++--------+----------------------+----------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node            ; To Node              ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------+----------------------+--------------+-------------+--------------+------------+------------+
+; -5.595 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.084     ; 6.509      ;
+; -5.572 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.084     ; 6.486      ;
+; -5.563 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.084     ; 6.477      ;
+; -5.533 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.084     ; 6.447      ;
+; -5.463 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.084     ; 6.377      ;
+; -5.440 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.084     ; 6.354      ;
+; -5.431 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.084     ; 6.345      ;
+; -5.420 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.084     ; 6.334      ;
+; -5.401 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.084     ; 6.315      ;
+; -5.370 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.084     ; 6.284      ;
+; -5.340 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.084     ; 6.254      ;
+; -5.321 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.084     ; 6.235      ;
+; -5.314 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.641      ;
+; -5.291 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.618      ;
+; -5.282 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.609      ;
+; -5.271 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[30] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.598      ;
+; -5.252 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.579      ;
+; -5.221 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[30] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.548      ;
+; -5.191 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[30] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.518      ;
+; -5.172 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[30] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.499      ;
+; -5.139 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[28] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.466      ;
+; -5.089 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[28] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.416      ;
+; -5.059 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[28] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.386      ;
+; -5.040 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[28] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.367      ;
+; -4.918 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[25] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.245      ;
+; -4.895 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[25] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.222      ;
+; -4.886 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[25] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.213      ;
+; -4.875 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[24] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.202      ;
+; -4.856 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[25] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.183      ;
+; -4.825 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[24] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.152      ;
+; -4.795 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[24] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.122      ;
+; -4.786 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[23] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.113      ;
+; -4.776 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[24] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.103      ;
+; -4.763 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[23] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.090      ;
+; -4.754 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[23] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.081      ;
+; -4.743 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[22] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.070      ;
+; -4.724 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[23] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.051      ;
+; -4.714 ; key[32]              ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.084     ; 5.628      ;
+; -4.693 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[22] ; clk          ; clk         ; 1.000        ; 0.329      ; 6.020      ;
+; -4.683 ; key[160]             ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.084     ; 5.597      ;
+; -4.667 ; key[2]               ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.587      ;
+; -4.663 ; key[34]              ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.583      ;
+; -4.663 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[22] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.990      ;
+; -4.654 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[21] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.981      ;
+; -4.649 ; key[50]              ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.077     ; 5.570      ;
+; -4.644 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[22] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.971      ;
+; -4.631 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[21] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.958      ;
+; -4.622 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[21] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.949      ;
+; -4.611 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[20] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.938      ;
+; -4.592 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[21] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.919      ;
+; -4.582 ; key[32]              ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.084     ; 5.496      ;
+; -4.561 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[20] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.888      ;
+; -4.554 ; magma:MAGMA|round[1] ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.096     ; 5.456      ;
+; -4.551 ; key[160]             ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.084     ; 5.465      ;
+; -4.535 ; key[2]               ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.455      ;
+; -4.533 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[13] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.453      ;
+; -4.531 ; key[34]              ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.451      ;
+; -4.531 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[20] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.858      ;
+; -4.522 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[19] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.849      ;
+; -4.517 ; key[50]              ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.077     ; 5.438      ;
+; -4.512 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[20] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.839      ;
+; -4.510 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[13] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.430      ;
+; -4.501 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[13] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.421      ;
+; -4.499 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[19] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.826      ;
+; -4.490 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[12] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.410      ;
+; -4.490 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[19] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.817      ;
+; -4.479 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[18] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.806      ;
+; -4.471 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[13] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.391      ;
+; -4.460 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[19] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.787      ;
+; -4.455 ; key[193]             ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.084     ; 5.369      ;
+; -4.451 ; key[226]             ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.371      ;
+; -4.443 ; key[3]               ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.077     ; 5.364      ;
+; -4.441 ; magma:MAGMA|round[1] ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.096     ; 5.343      ;
+; -4.440 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[12] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.360      ;
+; -4.433 ; key[32]              ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.760      ;
+; -4.432 ; key[0]               ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.084     ; 5.346      ;
+; -4.431 ; key[32]              ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.084     ; 5.345      ;
+; -4.430 ; key[100]             ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.097     ; 5.331      ;
+; -4.429 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[18] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.756      ;
+; -4.422 ; magma:MAGMA|round[1] ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.096     ; 5.324      ;
+; -4.410 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[12] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.330      ;
+; -4.402 ; key[160]             ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.729      ;
+; -4.401 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[11] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.321      ;
+; -4.400 ; key[162]             ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.320      ;
+; -4.400 ; key[160]             ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.084     ; 5.314      ;
+; -4.399 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[18] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.726      ;
+; -4.391 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[12] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.311      ;
+; -4.390 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[17] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.717      ;
+; -4.390 ; key[50]              ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.077     ; 5.311      ;
+; -4.386 ; key[2]               ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.335      ; 5.719      ;
+; -4.384 ; key[2]               ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.304      ;
+; -4.382 ; key[34]              ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.335      ; 5.715      ;
+; -4.380 ; key[34]              ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.300      ;
+; -4.380 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[18] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.707      ;
+; -4.379 ; key[5]               ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.104     ; 5.273      ;
+; -4.379 ; key[96]              ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.514     ; 4.863      ;
+; -4.378 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[11] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.298      ;
+; -4.369 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[11] ; clk          ; clk         ; 1.000        ; -0.078     ; 5.289      ;
+; -4.368 ; key[50]              ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.336      ; 5.702      ;
+; -4.367 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[17] ; clk          ; clk         ; 1.000        ; 0.329      ; 5.694      ;
++--------+----------------------+----------------------+--------------+-------------+--------------+------------+------------+
 
 
 +-----------------------------------------------------------------------------------------------------------+
@@ -285,106 +286,106 @@ No paths to report.
 +-------+--------------+--------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node    ; To Node      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+--------------+--------------+--------------+-------------+--------------+------------+------------+
-; 0.385 ; data_in[32]  ; data_in[32]  ; clk          ; clk         ; 0.000        ; 0.098      ; 0.669      ;
-; 0.385 ; data_in[35]  ; data_in[35]  ; clk          ; clk         ; 0.000        ; 0.098      ; 0.669      ;
-; 0.385 ; data_in[102] ; data_in[102] ; clk          ; clk         ; 0.000        ; 0.098      ; 0.669      ;
-; 0.385 ; data_in[6]   ; data_in[6]   ; clk          ; clk         ; 0.000        ; 0.098      ; 0.669      ;
-; 0.385 ; data_in[100] ; data_in[100] ; clk          ; clk         ; 0.000        ; 0.098      ; 0.669      ;
-; 0.385 ; data_in[68]  ; data_in[68]  ; clk          ; clk         ; 0.000        ; 0.098      ; 0.669      ;
-; 0.385 ; data_in[71]  ; data_in[71]  ; clk          ; clk         ; 0.000        ; 0.098      ; 0.669      ;
-; 0.385 ; data_in[74]  ; data_in[74]  ; clk          ; clk         ; 0.000        ; 0.098      ; 0.669      ;
-; 0.386 ; key[241]     ; key[241]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[209]     ; key[209]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[113]     ; key[113]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; data_in[81]  ; data_in[81]  ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[240]     ; key[240]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[176]     ; key[176]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[208]     ; key[208]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[112]     ; key[112]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; data_in[112] ; data_in[112] ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; data_in[80]  ; data_in[80]  ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[211]     ; key[211]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[115]     ; key[115]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; data_in[83]  ; data_in[83]  ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[242]     ; key[242]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[178]     ; key[178]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[210]     ; key[210]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; data_in[50]  ; data_in[50]  ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[21]      ; key[21]      ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[55]      ; key[55]      ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; data_in[88]  ; data_in[88]  ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; data_in[90]  ; data_in[90]  ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; data_in[58]  ; data_in[58]  ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; data_in[126] ; data_in[126] ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; data_in[94]  ; data_in[94]  ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[158]     ; key[158]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; data_in[60]  ; data_in[60]  ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[157]     ; key[157]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[2]       ; key[2]       ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[0]       ; key[0]       ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; data_in[64]  ; data_in[64]  ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[32]      ; key[32]      ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; data_in[97]  ; data_in[97]  ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[1]       ; key[1]       ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[3]       ; key[3]       ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[35]      ; key[35]      ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[134]     ; key[134]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[102]     ; key[102]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[6]       ; key[6]       ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[70]      ; key[70]      ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[132]     ; key[132]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[100]     ; key[100]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[4]       ; key[4]       ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[68]      ; key[68]      ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[101]     ; key[101]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[5]       ; key[5]       ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[69]      ; key[69]      ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[135]     ; key[135]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[7]       ; key[7]       ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[71]      ; key[71]      ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[138]     ; key[138]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[232]     ; key[232]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; key[104]     ; key[104]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.386 ; data_in[109] ; data_in[109] ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
-; 0.387 ; key[145]     ; key[145]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; data_in[113] ; data_in[113] ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; key[81]      ; key[81]      ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; key[144]     ; key[144]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; key[147]     ; key[147]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; data_in[115] ; data_in[115] ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; key[146]     ; key[146]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; key[82]      ; key[82]      ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; data_in[21]  ; data_in[21]  ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; key[119]     ; key[119]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; data_in[119] ; data_in[119] ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; key[23]      ; key[23]      ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; data_in[87]  ; data_in[87]  ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; data_in[23]  ; data_in[23]  ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; data_in[22]  ; data_in[22]  ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.385 ; key[135]     ; key[135]     ; clk          ; clk         ; 0.000        ; 0.098      ; 0.669      ;
+; 0.385 ; key[39]      ; key[39]      ; clk          ; clk         ; 0.000        ; 0.098      ; 0.669      ;
+; 0.385 ; key[138]     ; key[138]     ; clk          ; clk         ; 0.000        ; 0.098      ; 0.669      ;
+; 0.385 ; key[234]     ; key[234]     ; clk          ; clk         ; 0.000        ; 0.098      ; 0.669      ;
+; 0.385 ; key[202]     ; key[202]     ; clk          ; clk         ; 0.000        ; 0.098      ; 0.669      ;
+; 0.385 ; key[74]      ; key[74]      ; clk          ; clk         ; 0.000        ; 0.098      ; 0.669      ;
+; 0.386 ; key[137]     ; key[137]     ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
+; 0.386 ; key[37]      ; key[37]      ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
+; 0.387 ; key[152]     ; key[152]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[216]     ; key[216]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[184]     ; key[184]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[56]      ; key[56]      ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[249]     ; key[249]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[185]     ; key[185]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[217]     ; key[217]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[89]      ; key[89]      ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
 ; 0.387 ; key[57]      ; key[57]      ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; data_in[24]  ; data_in[24]  ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; key[126]     ; key[126]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; key[30]      ; key[30]      ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; key[62]      ; key[62]      ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; data_in[62]  ; data_in[62]  ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; key[28]      ; key[28]      ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; data_in[92]  ; data_in[92]  ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; key[63]      ; key[63]      ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; key[29]      ; key[29]      ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; key[61]      ; key[61]      ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; data_in[2]   ; data_in[2]   ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[206]     ; key[206]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[142]     ; key[142]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[123]     ; key[123]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[113]     ; key[113]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[49]      ; key[49]      ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[209]     ; key[209]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[83]      ; key[83]      ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[211]     ; key[211]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[179]     ; key[179]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[243]     ; key[243]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[112]     ; key[112]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[144]     ; key[144]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[208]     ; key[208]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[176]     ; key[176]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[218]     ; key[218]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[186]     ; key[186]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[250]     ; key[250]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[154]     ; key[154]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[134]     ; key[134]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[141]     ; key[141]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[109]     ; key[109]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[205]     ; key[205]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[151]     ; key[151]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[119]     ; key[119]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[192]     ; key[192]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.387 ; key[128]     ; key[128]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
 ; 0.387 ; key[96]      ; key[96]      ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; data_in[0]   ; data_in[0]   ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; key[161]     ; key[161]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; key[97]      ; key[97]      ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; data_in[1]   ; data_in[1]   ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; key[99]      ; key[99]      ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; data_in[4]   ; data_in[4]   ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; data_in[36]  ; data_in[36]  ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; key[133]     ; key[133]     ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; data_in[101] ; data_in[101] ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; data_in[69]  ; data_in[69]  ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
-; 0.387 ; data_in[5]   ; data_in[5]   ; clk          ; clk         ; 0.000        ; 0.096      ; 0.669      ;
+; 0.388 ; key[148]     ; key[148]     ; clk          ; clk         ; 0.000        ; 0.095      ; 0.669      ;
+; 0.388 ; key[116]     ; key[116]     ; clk          ; clk         ; 0.000        ; 0.095      ; 0.669      ;
+; 0.388 ; key[111]     ; key[111]     ; clk          ; clk         ; 0.000        ; 0.095      ; 0.669      ;
+; 0.388 ; key[118]     ; key[118]     ; clk          ; clk         ; 0.000        ; 0.095      ; 0.669      ;
+; 0.388 ; key[150]     ; key[150]     ; clk          ; clk         ; 0.000        ; 0.095      ; 0.669      ;
+; 0.388 ; key[149]     ; key[149]     ; clk          ; clk         ; 0.000        ; 0.095      ; 0.669      ;
+; 0.388 ; key[53]      ; key[53]      ; clk          ; clk         ; 0.000        ; 0.095      ; 0.669      ;
+; 0.403 ; data_in[97]  ; data_in[97]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[65]  ; data_in[65]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[103] ; data_in[103] ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[71]  ; data_in[71]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[101] ; data_in[101] ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[69]  ; data_in[69]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[102] ; data_in[102] ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[70]  ; data_in[70]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[100] ; data_in[100] ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[68]  ; data_in[68]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[35]  ; data_in[35]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[34]  ; data_in[34]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[38]  ; data_in[38]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[6]   ; data_in[6]   ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; key[145]     ; key[145]     ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[40]  ; data_in[40]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; key[147]     ; key[147]     ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[41]  ; data_in[41]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[9]   ; data_in[9]   ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[48]  ; data_in[48]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; key[103]     ; key[103]     ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; key[7]       ; key[7]       ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[42]  ; data_in[42]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[10]  ; data_in[10]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[39]  ; data_in[39]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[7]   ; data_in[7]   ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[37]  ; data_in[37]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; key[133]     ; key[133]     ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; key[5]       ; key[5]       ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; key[69]      ; key[69]      ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[36]  ; data_in[36]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; key[132]     ; key[132]     ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; key[100]     ; key[100]     ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; key[4]       ; key[4]       ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; key[36]      ; key[36]      ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; key[129]     ; key[129]     ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[43]  ; data_in[43]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[11]  ; data_in[11]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[33]  ; data_in[33]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; data_in[32]  ; data_in[32]  ; clk          ; clk         ; 0.000        ; 0.080      ; 0.669      ;
+; 0.404 ; data_in[114] ; data_in[114] ; clk          ; clk         ; 0.000        ; 0.079      ; 0.669      ;
+; 0.404 ; data_in[113] ; data_in[113] ; clk          ; clk         ; 0.000        ; 0.079      ; 0.669      ;
+; 0.404 ; data_in[118] ; data_in[118] ; clk          ; clk         ; 0.000        ; 0.079      ; 0.669      ;
+; 0.404 ; data_in[86]  ; data_in[86]  ; clk          ; clk         ; 0.000        ; 0.079      ; 0.669      ;
+; 0.404 ; data_in[123] ; data_in[123] ; clk          ; clk         ; 0.000        ; 0.079      ; 0.669      ;
+; 0.404 ; data_in[91]  ; data_in[91]  ; clk          ; clk         ; 0.000        ; 0.079      ; 0.669      ;
+; 0.404 ; data_in[121] ; data_in[121] ; clk          ; clk         ; 0.000        ; 0.079      ; 0.669      ;
+; 0.404 ; data_in[122] ; data_in[122] ; clk          ; clk         ; 0.000        ; 0.079      ; 0.669      ;
+; 0.404 ; data_in[90]  ; data_in[90]  ; clk          ; clk         ; 0.000        ; 0.079      ; 0.669      ;
 +-------+--------------+--------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -394,13 +395,13 @@ No paths to report.
 No synchronizer chains to report.
 
 
-+-----------------------------------------------------------------------------------------------------------+
-; Slow 1200mV 0C Model Fmax Summary                                                                         ;
-+------------+-----------------+------------+---------------------------------------------------------------+
-; Fmax       ; Restricted Fmax ; Clock Name ; Note                                                          ;
-+------------+-----------------+------------+---------------------------------------------------------------+
-; 321.54 MHz ; 250.0 MHz       ; clk        ; limit due to minimum period restriction (max I/O toggle rate) ;
-+------------+-----------------+------------+---------------------------------------------------------------+
++--------------------------------------------------+
+; Slow 1200mV 0C Model Fmax Summary                ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 167.25 MHz ; 167.25 MHz      ; clk        ;      ;
++------------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
@@ -409,7 +410,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------+--------+-------------------+
 ; Clock ; Slack  ; End Point TNS     ;
 +-------+--------+-------------------+
-; clk   ; -2.110 ; -769.076          ;
+; clk   ; -4.979 ; -1785.205         ;
 +-------+--------+-------------------+
 
 
@@ -439,116 +440,116 @@ No paths to report.
 +-------+--------+---------------------------------+
 ; Clock ; Slack  ; End Point TNS                   ;
 +-------+--------+---------------------------------+
-; clk   ; -3.000 ; -713.605                        ;
+; clk   ; -3.000 ; -836.965                        ;
 +-------+--------+---------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------+
-; Slow 1200mV 0C Model Setup: 'clk'                                                                                              ;
-+--------+----------------------+--------------------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node            ; To Node                  ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+----------------------+--------------------------+--------------+-------------+--------------+------------+------------+
-; -2.110 ; magma:MAGMA|round[1] ; magma:MAGMA|left[20]     ; clk          ; clk         ; 1.000        ; -0.053     ; 3.056      ;
-; -2.110 ; magma:MAGMA|round[1] ; magma:MAGMA|right[20]    ; clk          ; clk         ; 1.000        ; -0.053     ; 3.056      ;
-; -2.103 ; magma:MAGMA|round[3] ; magma:MAGMA|left[20]     ; clk          ; clk         ; 1.000        ; -0.053     ; 3.049      ;
-; -2.103 ; magma:MAGMA|round[3] ; magma:MAGMA|right[20]    ; clk          ; clk         ; 1.000        ; -0.053     ; 3.049      ;
-; -2.063 ; magma:MAGMA|round[1] ; magma:MAGMA|left[27]     ; clk          ; clk         ; 1.000        ; -0.055     ; 3.007      ;
-; -2.063 ; magma:MAGMA|round[1] ; magma:MAGMA|right[27]    ; clk          ; clk         ; 1.000        ; -0.055     ; 3.007      ;
-; -2.063 ; magma:MAGMA|round[1] ; magma:MAGMA|left[26]     ; clk          ; clk         ; 1.000        ; -0.055     ; 3.007      ;
-; -2.063 ; magma:MAGMA|round[1] ; magma:MAGMA|right[26]    ; clk          ; clk         ; 1.000        ; -0.055     ; 3.007      ;
-; -2.056 ; magma:MAGMA|round[3] ; magma:MAGMA|left[27]     ; clk          ; clk         ; 1.000        ; -0.055     ; 3.000      ;
-; -2.056 ; magma:MAGMA|round[3] ; magma:MAGMA|right[27]    ; clk          ; clk         ; 1.000        ; -0.055     ; 3.000      ;
-; -2.056 ; magma:MAGMA|round[3] ; magma:MAGMA|left[26]     ; clk          ; clk         ; 1.000        ; -0.055     ; 3.000      ;
-; -2.056 ; magma:MAGMA|round[3] ; magma:MAGMA|right[26]    ; clk          ; clk         ; 1.000        ; -0.055     ; 3.000      ;
-; -2.034 ; magma:MAGMA|round[1] ; magma:MAGMA|left[16]     ; clk          ; clk         ; 1.000        ; -0.051     ; 2.982      ;
-; -2.034 ; magma:MAGMA|round[1] ; magma:MAGMA|right[16]    ; clk          ; clk         ; 1.000        ; -0.051     ; 2.982      ;
-; -2.032 ; magma:MAGMA|round[1] ; magma:MAGMA|left[2]      ; clk          ; clk         ; 1.000        ; -0.052     ; 2.979      ;
-; -2.032 ; magma:MAGMA|round[1] ; magma:MAGMA|right[2]     ; clk          ; clk         ; 1.000        ; -0.052     ; 2.979      ;
-; -2.029 ; magma:MAGMA|round[1] ; magma:MAGMA|left[22]     ; clk          ; clk         ; 1.000        ; -0.067     ; 2.961      ;
-; -2.029 ; magma:MAGMA|round[1] ; magma:MAGMA|right[22]    ; clk          ; clk         ; 1.000        ; -0.067     ; 2.961      ;
-; -2.027 ; magma:MAGMA|round[3] ; magma:MAGMA|left[16]     ; clk          ; clk         ; 1.000        ; -0.051     ; 2.975      ;
-; -2.027 ; magma:MAGMA|round[3] ; magma:MAGMA|right[16]    ; clk          ; clk         ; 1.000        ; -0.051     ; 2.975      ;
-; -2.025 ; magma:MAGMA|round[3] ; magma:MAGMA|left[2]      ; clk          ; clk         ; 1.000        ; -0.052     ; 2.972      ;
-; -2.025 ; magma:MAGMA|round[3] ; magma:MAGMA|right[2]     ; clk          ; clk         ; 1.000        ; -0.052     ; 2.972      ;
-; -2.023 ; magma:MAGMA|round[1] ; magma:MAGMA|left[31]     ; clk          ; clk         ; 1.000        ; -0.058     ; 2.964      ;
-; -2.023 ; magma:MAGMA|round[1] ; magma:MAGMA|right[31]    ; clk          ; clk         ; 1.000        ; -0.058     ; 2.964      ;
-; -2.022 ; magma:MAGMA|round[3] ; magma:MAGMA|left[22]     ; clk          ; clk         ; 1.000        ; -0.067     ; 2.954      ;
-; -2.022 ; magma:MAGMA|round[3] ; magma:MAGMA|right[22]    ; clk          ; clk         ; 1.000        ; -0.067     ; 2.954      ;
-; -2.016 ; magma:MAGMA|round[3] ; magma:MAGMA|left[31]     ; clk          ; clk         ; 1.000        ; -0.058     ; 2.957      ;
-; -2.016 ; magma:MAGMA|round[3] ; magma:MAGMA|right[31]    ; clk          ; clk         ; 1.000        ; -0.058     ; 2.957      ;
-; -2.010 ; magma:MAGMA|round[1] ; magma:MAGMA|left[29]     ; clk          ; clk         ; 1.000        ; -0.044     ; 2.965      ;
-; -2.010 ; magma:MAGMA|round[1] ; magma:MAGMA|right[29]    ; clk          ; clk         ; 1.000        ; -0.044     ; 2.965      ;
-; -2.003 ; magma:MAGMA|round[3] ; magma:MAGMA|left[29]     ; clk          ; clk         ; 1.000        ; -0.044     ; 2.958      ;
-; -2.003 ; magma:MAGMA|round[3] ; magma:MAGMA|right[29]    ; clk          ; clk         ; 1.000        ; -0.044     ; 2.958      ;
-; -1.993 ; magma:MAGMA|round[1] ; magma:MAGMA|left[23]     ; clk          ; clk         ; 1.000        ; -0.077     ; 2.915      ;
-; -1.993 ; magma:MAGMA|round[1] ; magma:MAGMA|right[23]    ; clk          ; clk         ; 1.000        ; -0.077     ; 2.915      ;
-; -1.993 ; magma:MAGMA|round[1] ; magma:MAGMA|left[10]     ; clk          ; clk         ; 1.000        ; -0.077     ; 2.915      ;
-; -1.993 ; magma:MAGMA|round[1] ; magma:MAGMA|right[10]    ; clk          ; clk         ; 1.000        ; -0.077     ; 2.915      ;
-; -1.993 ; magma:MAGMA|round[1] ; magma:MAGMA|left[11]     ; clk          ; clk         ; 1.000        ; -0.077     ; 2.915      ;
-; -1.993 ; magma:MAGMA|round[1] ; magma:MAGMA|right[11]    ; clk          ; clk         ; 1.000        ; -0.077     ; 2.915      ;
-; -1.993 ; magma:MAGMA|round[1] ; magma:MAGMA|left[14]     ; clk          ; clk         ; 1.000        ; -0.077     ; 2.915      ;
-; -1.993 ; magma:MAGMA|round[1] ; magma:MAGMA|right[14]    ; clk          ; clk         ; 1.000        ; -0.077     ; 2.915      ;
-; -1.986 ; magma:MAGMA|round[3] ; magma:MAGMA|left[23]     ; clk          ; clk         ; 1.000        ; -0.077     ; 2.908      ;
-; -1.986 ; magma:MAGMA|round[3] ; magma:MAGMA|right[23]    ; clk          ; clk         ; 1.000        ; -0.077     ; 2.908      ;
-; -1.986 ; magma:MAGMA|round[3] ; magma:MAGMA|left[10]     ; clk          ; clk         ; 1.000        ; -0.077     ; 2.908      ;
-; -1.986 ; magma:MAGMA|round[3] ; magma:MAGMA|right[10]    ; clk          ; clk         ; 1.000        ; -0.077     ; 2.908      ;
-; -1.986 ; magma:MAGMA|round[3] ; magma:MAGMA|left[11]     ; clk          ; clk         ; 1.000        ; -0.077     ; 2.908      ;
-; -1.986 ; magma:MAGMA|round[3] ; magma:MAGMA|right[11]    ; clk          ; clk         ; 1.000        ; -0.077     ; 2.908      ;
-; -1.986 ; magma:MAGMA|round[3] ; magma:MAGMA|left[14]     ; clk          ; clk         ; 1.000        ; -0.077     ; 2.908      ;
-; -1.986 ; magma:MAGMA|round[3] ; magma:MAGMA|right[14]    ; clk          ; clk         ; 1.000        ; -0.077     ; 2.908      ;
-; -1.950 ; magma:MAGMA|round[2] ; magma:MAGMA|left[20]     ; clk          ; clk         ; 1.000        ; -0.053     ; 2.896      ;
-; -1.950 ; magma:MAGMA|round[2] ; magma:MAGMA|right[20]    ; clk          ; clk         ; 1.000        ; -0.053     ; 2.896      ;
-; -1.906 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[16] ; clk          ; clk         ; 1.000        ; -0.051     ; 2.854      ;
-; -1.905 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[16] ; clk          ; clk         ; 1.000        ; -0.051     ; 2.853      ;
-; -1.904 ; magma:MAGMA|round[1] ; magma:MAGMA|left[17]     ; clk          ; clk         ; 1.000        ; -0.066     ; 2.837      ;
-; -1.904 ; magma:MAGMA|round[1] ; magma:MAGMA|right[17]    ; clk          ; clk         ; 1.000        ; -0.066     ; 2.837      ;
-; -1.903 ; magma:MAGMA|round[2] ; magma:MAGMA|left[27]     ; clk          ; clk         ; 1.000        ; -0.055     ; 2.847      ;
-; -1.903 ; magma:MAGMA|round[2] ; magma:MAGMA|right[27]    ; clk          ; clk         ; 1.000        ; -0.055     ; 2.847      ;
-; -1.903 ; magma:MAGMA|round[2] ; magma:MAGMA|left[26]     ; clk          ; clk         ; 1.000        ; -0.055     ; 2.847      ;
-; -1.903 ; magma:MAGMA|round[2] ; magma:MAGMA|right[26]    ; clk          ; clk         ; 1.000        ; -0.055     ; 2.847      ;
-; -1.897 ; magma:MAGMA|round[3] ; magma:MAGMA|left[17]     ; clk          ; clk         ; 1.000        ; -0.066     ; 2.830      ;
-; -1.897 ; magma:MAGMA|round[3] ; magma:MAGMA|right[17]    ; clk          ; clk         ; 1.000        ; -0.066     ; 2.830      ;
-; -1.874 ; magma:MAGMA|round[2] ; magma:MAGMA|left[16]     ; clk          ; clk         ; 1.000        ; -0.051     ; 2.822      ;
-; -1.874 ; magma:MAGMA|round[2] ; magma:MAGMA|right[16]    ; clk          ; clk         ; 1.000        ; -0.051     ; 2.822      ;
-; -1.872 ; magma:MAGMA|round[2] ; magma:MAGMA|left[2]      ; clk          ; clk         ; 1.000        ; -0.052     ; 2.819      ;
-; -1.872 ; magma:MAGMA|round[2] ; magma:MAGMA|right[2]     ; clk          ; clk         ; 1.000        ; -0.052     ; 2.819      ;
-; -1.869 ; magma:MAGMA|round[2] ; magma:MAGMA|left[22]     ; clk          ; clk         ; 1.000        ; -0.067     ; 2.801      ;
-; -1.869 ; magma:MAGMA|round[2] ; magma:MAGMA|right[22]    ; clk          ; clk         ; 1.000        ; -0.067     ; 2.801      ;
-; -1.863 ; magma:MAGMA|round[2] ; magma:MAGMA|left[31]     ; clk          ; clk         ; 1.000        ; -0.058     ; 2.804      ;
-; -1.863 ; magma:MAGMA|round[2] ; magma:MAGMA|right[31]    ; clk          ; clk         ; 1.000        ; -0.058     ; 2.804      ;
-; -1.861 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[48] ; clk          ; clk         ; 1.000        ; -0.067     ; 2.793      ;
-; -1.861 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[28] ; clk          ; clk         ; 1.000        ; -0.067     ; 2.793      ;
-; -1.861 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[63] ; clk          ; clk         ; 1.000        ; -0.067     ; 2.793      ;
-; -1.860 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[48] ; clk          ; clk         ; 1.000        ; -0.067     ; 2.792      ;
-; -1.860 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[28] ; clk          ; clk         ; 1.000        ; -0.067     ; 2.792      ;
-; -1.860 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[63] ; clk          ; clk         ; 1.000        ; -0.067     ; 2.792      ;
-; -1.850 ; magma:MAGMA|round[2] ; magma:MAGMA|left[29]     ; clk          ; clk         ; 1.000        ; -0.044     ; 2.805      ;
-; -1.850 ; magma:MAGMA|round[2] ; magma:MAGMA|right[29]    ; clk          ; clk         ; 1.000        ; -0.044     ; 2.805      ;
-; -1.844 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[49] ; clk          ; clk         ; 1.000        ; -0.066     ; 2.777      ;
-; -1.844 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[17] ; clk          ; clk         ; 1.000        ; -0.066     ; 2.777      ;
-; -1.844 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[29] ; clk          ; clk         ; 1.000        ; -0.066     ; 2.777      ;
-; -1.843 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[49] ; clk          ; clk         ; 1.000        ; -0.066     ; 2.776      ;
-; -1.843 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[17] ; clk          ; clk         ; 1.000        ; -0.066     ; 2.776      ;
-; -1.843 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[29] ; clk          ; clk         ; 1.000        ; -0.066     ; 2.776      ;
-; -1.837 ; but_r[0]             ; pos[2]                   ; clk          ; clk         ; 1.000        ; -0.063     ; 2.773      ;
-; -1.837 ; but_r[0]             ; pos[1]                   ; clk          ; clk         ; 1.000        ; -0.063     ; 2.773      ;
-; -1.837 ; but_r[0]             ; pos[0]                   ; clk          ; clk         ; 1.000        ; -0.063     ; 2.773      ;
-; -1.833 ; magma:MAGMA|round[2] ; magma:MAGMA|left[23]     ; clk          ; clk         ; 1.000        ; -0.077     ; 2.755      ;
-; -1.833 ; magma:MAGMA|round[2] ; magma:MAGMA|right[23]    ; clk          ; clk         ; 1.000        ; -0.077     ; 2.755      ;
-; -1.833 ; magma:MAGMA|round[2] ; magma:MAGMA|left[10]     ; clk          ; clk         ; 1.000        ; -0.077     ; 2.755      ;
-; -1.833 ; magma:MAGMA|round[2] ; magma:MAGMA|right[10]    ; clk          ; clk         ; 1.000        ; -0.077     ; 2.755      ;
-; -1.833 ; magma:MAGMA|round[2] ; magma:MAGMA|left[11]     ; clk          ; clk         ; 1.000        ; -0.077     ; 2.755      ;
-; -1.833 ; magma:MAGMA|round[2] ; magma:MAGMA|right[11]    ; clk          ; clk         ; 1.000        ; -0.077     ; 2.755      ;
-; -1.833 ; magma:MAGMA|round[2] ; magma:MAGMA|left[14]     ; clk          ; clk         ; 1.000        ; -0.077     ; 2.755      ;
-; -1.833 ; magma:MAGMA|round[2] ; magma:MAGMA|right[14]    ; clk          ; clk         ; 1.000        ; -0.077     ; 2.755      ;
-; -1.831 ; magma:MAGMA|round[0] ; magma:MAGMA|left[20]     ; clk          ; clk         ; 1.000        ; -0.053     ; 2.777      ;
-; -1.831 ; magma:MAGMA|round[0] ; magma:MAGMA|right[20]    ; clk          ; clk         ; 1.000        ; -0.053     ; 2.777      ;
-; -1.822 ; magma:MAGMA|round[1] ; magma:MAGMA|left[7]      ; clk          ; clk         ; 1.000        ; -0.041     ; 2.780      ;
-; -1.822 ; magma:MAGMA|round[1] ; magma:MAGMA|right[7]     ; clk          ; clk         ; 1.000        ; -0.041     ; 2.780      ;
-; -1.815 ; magma:MAGMA|round[3] ; magma:MAGMA|left[7]      ; clk          ; clk         ; 1.000        ; -0.041     ; 2.773      ;
-; -1.815 ; magma:MAGMA|round[3] ; magma:MAGMA|right[7]     ; clk          ; clk         ; 1.000        ; -0.041     ; 2.773      ;
-; -1.800 ; magma:MAGMA|round[1] ; magma:MAGMA|left[25]     ; clk          ; clk         ; 1.000        ; -0.048     ; 2.751      ;
-+--------+----------------------+--------------------------+--------------+-------------+--------------+------------+------------+
++----------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Setup: 'clk'                                                                                          ;
++--------+----------------------+----------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node            ; To Node              ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------+----------------------+--------------+-------------+--------------+------------+------------+
+; -4.979 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.077     ; 5.901      ;
+; -4.929 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.077     ; 5.851      ;
+; -4.922 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.077     ; 5.844      ;
+; -4.912 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.077     ; 5.834      ;
+; -4.863 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.077     ; 5.785      ;
+; -4.813 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.077     ; 5.735      ;
+; -4.806 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.077     ; 5.728      ;
+; -4.796 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.077     ; 5.718      ;
+; -4.745 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.077     ; 5.667      ;
+; -4.732 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.077     ; 5.654      ;
+; -4.715 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.303      ; 6.017      ;
+; -4.684 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.077     ; 5.606      ;
+; -4.665 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.967      ;
+; -4.663 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.077     ; 5.585      ;
+; -4.658 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.960      ;
+; -4.648 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.950      ;
+; -4.597 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[30] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.899      ;
+; -4.584 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[30] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.886      ;
+; -4.536 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[30] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.838      ;
+; -4.515 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[30] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.817      ;
+; -4.481 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[28] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.783      ;
+; -4.468 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[28] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.770      ;
+; -4.420 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[28] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.722      ;
+; -4.399 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[28] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.701      ;
+; -4.367 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[25] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.669      ;
+; -4.317 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[25] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.619      ;
+; -4.310 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[25] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.612      ;
+; -4.300 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[25] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.602      ;
+; -4.251 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[23] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.553      ;
+; -4.249 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[24] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.551      ;
+; -4.236 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[24] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.538      ;
+; -4.201 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[23] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.503      ;
+; -4.194 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[23] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.496      ;
+; -4.188 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[24] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.490      ;
+; -4.184 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[23] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.486      ;
+; -4.167 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[24] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.469      ;
+; -4.158 ; key[50]              ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.069     ; 5.088      ;
+; -4.138 ; key[32]              ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.077     ; 5.060      ;
+; -4.135 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[21] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.437      ;
+; -4.133 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[22] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.435      ;
+; -4.123 ; key[160]             ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.077     ; 5.045      ;
+; -4.120 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[22] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.422      ;
+; -4.107 ; key[34]              ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.071     ; 5.035      ;
+; -4.093 ; key[2]               ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.071     ; 5.021      ;
+; -4.085 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[21] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.387      ;
+; -4.078 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[21] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.380      ;
+; -4.072 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[22] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.374      ;
+; -4.068 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[21] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.370      ;
+; -4.051 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[22] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.353      ;
+; -4.044 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[13] ; clk          ; clk         ; 1.000        ; -0.070     ; 4.973      ;
+; -4.042 ; key[50]              ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.069     ; 4.972      ;
+; -4.022 ; key[32]              ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.077     ; 4.944      ;
+; -4.019 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[19] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.321      ;
+; -4.017 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[20] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.319      ;
+; -4.007 ; key[160]             ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.077     ; 4.929      ;
+; -4.004 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[20] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.306      ;
+; -3.994 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[13] ; clk          ; clk         ; 1.000        ; -0.070     ; 4.923      ;
+; -3.991 ; key[34]              ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.071     ; 4.919      ;
+; -3.987 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[13] ; clk          ; clk         ; 1.000        ; -0.070     ; 4.916      ;
+; -3.977 ; key[2]               ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.071     ; 4.905      ;
+; -3.977 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[13] ; clk          ; clk         ; 1.000        ; -0.070     ; 4.906      ;
+; -3.969 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[19] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.271      ;
+; -3.967 ; magma:MAGMA|round[1] ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.090     ; 4.876      ;
+; -3.962 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[19] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.264      ;
+; -3.956 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[20] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.258      ;
+; -3.952 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[19] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.254      ;
+; -3.935 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[20] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.237      ;
+; -3.928 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[11] ; clk          ; clk         ; 1.000        ; -0.070     ; 4.857      ;
+; -3.926 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[12] ; clk          ; clk         ; 1.000        ; -0.070     ; 4.855      ;
+; -3.913 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[12] ; clk          ; clk         ; 1.000        ; -0.070     ; 4.842      ;
+; -3.905 ; key[226]             ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.071     ; 4.833      ;
+; -3.903 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[17] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.205      ;
+; -3.901 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[18] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.203      ;
+; -3.897 ; key[50]              ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.069     ; 4.827      ;
+; -3.894 ; key[50]              ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.311      ; 5.204      ;
+; -3.892 ; key[100]             ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.090     ; 4.801      ;
+; -3.888 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[18] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.190      ;
+; -3.885 ; key[0]               ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.076     ; 4.808      ;
+; -3.878 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[11] ; clk          ; clk         ; 1.000        ; -0.070     ; 4.807      ;
+; -3.877 ; key[32]              ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.077     ; 4.799      ;
+; -3.874 ; key[32]              ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.176      ;
+; -3.872 ; key[3]               ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.070     ; 4.801      ;
+; -3.871 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[11] ; clk          ; clk         ; 1.000        ; -0.070     ; 4.800      ;
+; -3.865 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[12] ; clk          ; clk         ; 1.000        ; -0.070     ; 4.794      ;
+; -3.863 ; key[96]              ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.472     ; 4.390      ;
+; -3.862 ; key[160]             ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.077     ; 4.784      ;
+; -3.861 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[11] ; clk          ; clk         ; 1.000        ; -0.070     ; 4.790      ;
+; -3.859 ; key[162]             ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.071     ; 4.787      ;
+; -3.859 ; key[160]             ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.161      ;
+; -3.853 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[17] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.155      ;
+; -3.851 ; magma:MAGMA|round[1] ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.090     ; 4.760      ;
+; -3.851 ; magma:MAGMA|round[1] ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.090     ; 4.760      ;
+; -3.847 ; key[193]             ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.077     ; 4.769      ;
+; -3.846 ; key[34]              ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.071     ; 4.774      ;
+; -3.846 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[17] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.148      ;
+; -3.844 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[12] ; clk          ; clk         ; 1.000        ; -0.070     ; 4.773      ;
+; -3.843 ; key[34]              ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.309      ; 5.151      ;
+; -3.840 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[18] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.142      ;
+; -3.836 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[17] ; clk          ; clk         ; 1.000        ; 0.303      ; 5.138      ;
+; -3.832 ; key[2]               ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.071     ; 4.760      ;
++--------+----------------------+----------------------+--------------+-------------+--------------+------------+------------+
 
 
 +-----------------------------------------------------------------------------------------------------------+
@@ -556,106 +557,106 @@ No paths to report.
 +-------+--------------+--------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node    ; To Node      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+--------------+--------------+--------------+-------------+--------------+------------+------------+
-; 0.338 ; data_in[32]  ; data_in[32]  ; clk          ; clk         ; 0.000        ; 0.088      ; 0.597      ;
-; 0.338 ; data_in[35]  ; data_in[35]  ; clk          ; clk         ; 0.000        ; 0.088      ; 0.597      ;
-; 0.338 ; key[35]      ; key[35]      ; clk          ; clk         ; 0.000        ; 0.088      ; 0.597      ;
-; 0.338 ; data_in[102] ; data_in[102] ; clk          ; clk         ; 0.000        ; 0.088      ; 0.597      ;
-; 0.338 ; data_in[6]   ; data_in[6]   ; clk          ; clk         ; 0.000        ; 0.088      ; 0.597      ;
-; 0.338 ; data_in[100] ; data_in[100] ; clk          ; clk         ; 0.000        ; 0.088      ; 0.597      ;
-; 0.338 ; data_in[68]  ; data_in[68]  ; clk          ; clk         ; 0.000        ; 0.088      ; 0.597      ;
-; 0.338 ; key[71]      ; key[71]      ; clk          ; clk         ; 0.000        ; 0.088      ; 0.597      ;
-; 0.338 ; data_in[71]  ; data_in[71]  ; clk          ; clk         ; 0.000        ; 0.088      ; 0.597      ;
-; 0.339 ; key[241]     ; key[241]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[209]     ; key[209]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[113]     ; key[113]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[81]      ; key[81]      ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[240]     ; key[240]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[176]     ; key[176]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[112]     ; key[112]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; data_in[112] ; data_in[112] ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[211]     ; key[211]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[115]     ; key[115]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[82]      ; key[82]      ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[21]      ; key[21]      ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[55]      ; key[55]      ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; data_in[126] ; data_in[126] ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[30]      ; key[30]      ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; data_in[94]  ; data_in[94]  ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[158]     ; key[158]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[28]      ; key[28]      ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[157]     ; key[157]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[29]      ; key[29]      ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[2]       ; key[2]       ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
+; 0.338 ; key[135]     ; key[135]     ; clk          ; clk         ; 0.000        ; 0.088      ; 0.597      ;
+; 0.338 ; key[39]      ; key[39]      ; clk          ; clk         ; 0.000        ; 0.088      ; 0.597      ;
+; 0.338 ; key[138]     ; key[138]     ; clk          ; clk         ; 0.000        ; 0.088      ; 0.597      ;
+; 0.338 ; key[234]     ; key[234]     ; clk          ; clk         ; 0.000        ; 0.088      ; 0.597      ;
+; 0.338 ; key[202]     ; key[202]     ; clk          ; clk         ; 0.000        ; 0.088      ; 0.597      ;
+; 0.338 ; key[74]      ; key[74]      ; clk          ; clk         ; 0.000        ; 0.088      ; 0.597      ;
+; 0.339 ; key[185]     ; key[185]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
+; 0.339 ; key[217]     ; key[217]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
+; 0.339 ; key[89]      ; key[89]      ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
+; 0.339 ; key[57]      ; key[57]      ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
+; 0.339 ; key[123]     ; key[123]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
+; 0.339 ; key[83]      ; key[83]      ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
+; 0.339 ; key[37]      ; key[37]      ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
+; 0.339 ; key[192]     ; key[192]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
+; 0.339 ; key[128]     ; key[128]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
 ; 0.339 ; key[96]      ; key[96]      ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[0]       ; key[0]       ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[32]      ; key[32]      ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[97]      ; key[97]      ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[1]       ; key[1]       ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[3]       ; key[3]       ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[134]     ; key[134]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[102]     ; key[102]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[6]       ; key[6]       ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[70]      ; key[70]      ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[132]     ; key[132]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[100]     ; key[100]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[4]       ; key[4]       ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[68]      ; key[68]      ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[101]     ; key[101]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[5]       ; key[5]       ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[69]      ; key[69]      ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[135]     ; key[135]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[7]       ; key[7]       ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[138]     ; key[138]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[106]     ; key[106]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[74]      ; key[74]      ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; data_in[74]  ; data_in[74]  ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[232]     ; key[232]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; key[104]     ; key[104]     ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.339 ; data_in[109] ; data_in[109] ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
-; 0.340 ; key[145]     ; key[145]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[81]  ; data_in[81]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
+; 0.340 ; key[148]     ; key[148]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
+; 0.340 ; key[116]     ; key[116]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
+; 0.340 ; key[152]     ; key[152]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
+; 0.340 ; key[216]     ; key[216]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
+; 0.340 ; key[184]     ; key[184]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
+; 0.340 ; key[56]      ; key[56]      ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
+; 0.340 ; key[113]     ; key[113]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
+; 0.340 ; key[49]      ; key[49]      ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
+; 0.340 ; key[209]     ; key[209]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
+; 0.340 ; key[112]     ; key[112]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
 ; 0.340 ; key[144]     ; key[144]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
 ; 0.340 ; key[208]     ; key[208]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[80]  ; data_in[80]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; key[147]     ; key[147]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[83]  ; data_in[83]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; key[242]     ; key[242]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; key[146]     ; key[146]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; key[178]     ; key[178]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; key[210]     ; key[210]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[50]  ; data_in[50]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[84]  ; data_in[84]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[119] ; data_in[119] ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[87]  ; data_in[87]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[23]  ; data_in[23]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[89]  ; data_in[89]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; key[57]      ; key[57]      ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[88]  ; data_in[88]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[24]  ; data_in[24]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[91]  ; data_in[91]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[90]  ; data_in[90]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[58]  ; data_in[58]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; key[126]     ; key[126]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; key[62]      ; key[62]      ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[62]  ; data_in[62]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[92]  ; data_in[92]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[60]  ; data_in[60]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; key[63]      ; key[63]      ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; key[61]      ; key[61]      ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[64]  ; data_in[64]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; key[161]     ; key[161]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[97]  ; data_in[97]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; key[99]      ; key[99]      ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[36]  ; data_in[36]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; key[133]     ; key[133]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[37]  ; data_in[37]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; key[103]     ; key[103]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[39]  ; data_in[39]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[10]  ; data_in[10]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[42]  ; data_in[42]  ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; key[42]      ; key[42]      ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; data_in[104] ; data_in[104] ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
-; 0.340 ; key[72]      ; key[72]      ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
+; 0.340 ; key[176]     ; key[176]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
+; 0.340 ; key[137]     ; key[137]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
+; 0.340 ; key[218]     ; key[218]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
+; 0.340 ; key[186]     ; key[186]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
+; 0.340 ; key[134]     ; key[134]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
+; 0.340 ; key[151]     ; key[151]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
+; 0.340 ; key[119]     ; key[119]     ; clk          ; clk         ; 0.000        ; 0.086      ; 0.597      ;
+; 0.341 ; key[111]     ; key[111]     ; clk          ; clk         ; 0.000        ; 0.085      ; 0.597      ;
+; 0.341 ; key[249]     ; key[249]     ; clk          ; clk         ; 0.000        ; 0.085      ; 0.597      ;
+; 0.341 ; key[206]     ; key[206]     ; clk          ; clk         ; 0.000        ; 0.085      ; 0.597      ;
+; 0.341 ; key[142]     ; key[142]     ; clk          ; clk         ; 0.000        ; 0.085      ; 0.597      ;
+; 0.341 ; key[211]     ; key[211]     ; clk          ; clk         ; 0.000        ; 0.085      ; 0.597      ;
+; 0.341 ; key[179]     ; key[179]     ; clk          ; clk         ; 0.000        ; 0.085      ; 0.597      ;
+; 0.341 ; key[243]     ; key[243]     ; clk          ; clk         ; 0.000        ; 0.085      ; 0.597      ;
+; 0.341 ; key[118]     ; key[118]     ; clk          ; clk         ; 0.000        ; 0.085      ; 0.597      ;
+; 0.341 ; key[150]     ; key[150]     ; clk          ; clk         ; 0.000        ; 0.085      ; 0.597      ;
+; 0.341 ; key[149]     ; key[149]     ; clk          ; clk         ; 0.000        ; 0.085      ; 0.597      ;
+; 0.341 ; key[53]      ; key[53]      ; clk          ; clk         ; 0.000        ; 0.085      ; 0.597      ;
+; 0.341 ; key[250]     ; key[250]     ; clk          ; clk         ; 0.000        ; 0.085      ; 0.597      ;
+; 0.341 ; key[154]     ; key[154]     ; clk          ; clk         ; 0.000        ; 0.085      ; 0.597      ;
+; 0.341 ; key[141]     ; key[141]     ; clk          ; clk         ; 0.000        ; 0.085      ; 0.597      ;
+; 0.341 ; key[109]     ; key[109]     ; clk          ; clk         ; 0.000        ; 0.085      ; 0.597      ;
+; 0.341 ; key[205]     ; key[205]     ; clk          ; clk         ; 0.000        ; 0.085      ; 0.597      ;
+; 0.354 ; data_in[71]  ; data_in[71]  ; clk          ; clk         ; 0.000        ; 0.072      ; 0.597      ;
+; 0.354 ; data_in[7]   ; data_in[7]   ; clk          ; clk         ; 0.000        ; 0.072      ; 0.597      ;
+; 0.354 ; key[133]     ; key[133]     ; clk          ; clk         ; 0.000        ; 0.072      ; 0.597      ;
+; 0.354 ; key[5]       ; key[5]       ; clk          ; clk         ; 0.000        ; 0.072      ; 0.597      ;
+; 0.354 ; key[69]      ; key[69]      ; clk          ; clk         ; 0.000        ; 0.072      ; 0.597      ;
+; 0.355 ; data_in[90]  ; data_in[90]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[120] ; data_in[120] ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[88]  ; data_in[88]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[126] ; data_in[126] ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[94]  ; data_in[94]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[124] ; data_in[124] ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[92]  ; data_in[92]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[95]  ; data_in[95]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[103] ; data_in[103] ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[101] ; data_in[101] ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[69]  ; data_in[69]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[102] ; data_in[102] ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[70]  ; data_in[70]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[100] ; data_in[100] ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[68]  ; data_in[68]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[104] ; data_in[104] ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[72]  ; data_in[72]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[111] ; data_in[111] ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[109] ; data_in[109] ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[108] ; data_in[108] ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[1]   ; data_in[1]   ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; key[43]      ; key[43]      ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[35]  ; data_in[35]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[2]   ; data_in[2]   ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[34]  ; data_in[34]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; key[120]     ; key[120]     ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; key[88]      ; key[88]      ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[38]  ; data_in[38]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[6]   ; data_in[6]   ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[26]  ; data_in[26]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[58]  ; data_in[58]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[40]  ; data_in[40]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; key[159]     ; key[159]     ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; key[31]      ; key[31]      ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; key[63]      ; key[63]      ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; key[95]      ; key[95]      ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; key[223]     ; key[223]     ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; key[92]      ; key[92]      ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; key[60]      ; key[60]      ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; key[28]      ; key[28]      ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[60]  ; data_in[60]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[41]  ; data_in[41]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[9]   ; data_in[9]   ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
+; 0.355 ; data_in[30]  ; data_in[30]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.597      ;
 +-------+--------------+--------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -670,7 +671,7 @@ No synchronizer chains to report.
 +-------+--------+-------------------+
 ; Clock ; Slack  ; End Point TNS     ;
 +-------+--------+-------------------+
-; clk   ; -0.650 ; -163.482          ;
+; clk   ; -2.324 ; -675.884          ;
 +-------+--------+-------------------+
 
 
@@ -700,116 +701,116 @@ No paths to report.
 +-------+--------+---------------------------------+
 ; Clock ; Slack  ; End Point TNS                   ;
 +-------+--------+---------------------------------+
-; clk   ; -3.000 ; -594.322                        ;
+; clk   ; -3.000 ; -693.918                        ;
 +-------+--------+---------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------+
-; Fast 1200mV 0C Model Setup: 'clk'                                                                                              ;
-+--------+----------------------+--------------------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node            ; To Node                  ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+----------------------+--------------------------+--------------+-------------+--------------+------------+------------+
-; -0.650 ; magma:MAGMA|round[1] ; magma:MAGMA|left[20]     ; clk          ; clk         ; 1.000        ; -0.024     ; 1.613      ;
-; -0.650 ; magma:MAGMA|round[1] ; magma:MAGMA|right[20]    ; clk          ; clk         ; 1.000        ; -0.024     ; 1.613      ;
-; -0.649 ; magma:MAGMA|round[3] ; magma:MAGMA|left[20]     ; clk          ; clk         ; 1.000        ; -0.024     ; 1.612      ;
-; -0.649 ; magma:MAGMA|round[3] ; magma:MAGMA|right[20]    ; clk          ; clk         ; 1.000        ; -0.024     ; 1.612      ;
-; -0.614 ; magma:MAGMA|round[1] ; magma:MAGMA|left[27]     ; clk          ; clk         ; 1.000        ; -0.025     ; 1.576      ;
-; -0.614 ; magma:MAGMA|round[1] ; magma:MAGMA|right[27]    ; clk          ; clk         ; 1.000        ; -0.025     ; 1.576      ;
-; -0.614 ; magma:MAGMA|round[1] ; magma:MAGMA|left[26]     ; clk          ; clk         ; 1.000        ; -0.025     ; 1.576      ;
-; -0.614 ; magma:MAGMA|round[1] ; magma:MAGMA|right[26]    ; clk          ; clk         ; 1.000        ; -0.025     ; 1.576      ;
-; -0.613 ; magma:MAGMA|round[3] ; magma:MAGMA|left[27]     ; clk          ; clk         ; 1.000        ; -0.025     ; 1.575      ;
-; -0.613 ; magma:MAGMA|round[3] ; magma:MAGMA|right[27]    ; clk          ; clk         ; 1.000        ; -0.025     ; 1.575      ;
-; -0.613 ; magma:MAGMA|round[3] ; magma:MAGMA|left[26]     ; clk          ; clk         ; 1.000        ; -0.025     ; 1.575      ;
-; -0.613 ; magma:MAGMA|round[3] ; magma:MAGMA|right[26]    ; clk          ; clk         ; 1.000        ; -0.025     ; 1.575      ;
-; -0.597 ; magma:MAGMA|round[1] ; magma:MAGMA|left[22]     ; clk          ; clk         ; 1.000        ; -0.038     ; 1.546      ;
-; -0.597 ; magma:MAGMA|round[1] ; magma:MAGMA|right[22]    ; clk          ; clk         ; 1.000        ; -0.038     ; 1.546      ;
-; -0.596 ; magma:MAGMA|round[3] ; magma:MAGMA|left[22]     ; clk          ; clk         ; 1.000        ; -0.038     ; 1.545      ;
-; -0.596 ; magma:MAGMA|round[3] ; magma:MAGMA|right[22]    ; clk          ; clk         ; 1.000        ; -0.038     ; 1.545      ;
-; -0.586 ; magma:MAGMA|round[1] ; magma:MAGMA|left[16]     ; clk          ; clk         ; 1.000        ; -0.023     ; 1.550      ;
-; -0.586 ; magma:MAGMA|round[1] ; magma:MAGMA|right[16]    ; clk          ; clk         ; 1.000        ; -0.023     ; 1.550      ;
-; -0.585 ; magma:MAGMA|round[1] ; magma:MAGMA|left[31]     ; clk          ; clk         ; 1.000        ; -0.030     ; 1.542      ;
-; -0.585 ; magma:MAGMA|round[1] ; magma:MAGMA|right[31]    ; clk          ; clk         ; 1.000        ; -0.030     ; 1.542      ;
-; -0.585 ; magma:MAGMA|round[3] ; magma:MAGMA|left[16]     ; clk          ; clk         ; 1.000        ; -0.023     ; 1.549      ;
-; -0.585 ; magma:MAGMA|round[3] ; magma:MAGMA|right[16]    ; clk          ; clk         ; 1.000        ; -0.023     ; 1.549      ;
-; -0.584 ; magma:MAGMA|round[1] ; magma:MAGMA|left[2]      ; clk          ; clk         ; 1.000        ; -0.023     ; 1.548      ;
-; -0.584 ; magma:MAGMA|round[1] ; magma:MAGMA|right[2]     ; clk          ; clk         ; 1.000        ; -0.023     ; 1.548      ;
-; -0.584 ; magma:MAGMA|round[3] ; magma:MAGMA|left[31]     ; clk          ; clk         ; 1.000        ; -0.030     ; 1.541      ;
-; -0.584 ; magma:MAGMA|round[3] ; magma:MAGMA|right[31]    ; clk          ; clk         ; 1.000        ; -0.030     ; 1.541      ;
-; -0.583 ; magma:MAGMA|round[3] ; magma:MAGMA|left[2]      ; clk          ; clk         ; 1.000        ; -0.023     ; 1.547      ;
-; -0.583 ; magma:MAGMA|round[3] ; magma:MAGMA|right[2]     ; clk          ; clk         ; 1.000        ; -0.023     ; 1.547      ;
-; -0.577 ; magma:MAGMA|round[1] ; magma:MAGMA|left[29]     ; clk          ; clk         ; 1.000        ; -0.016     ; 1.548      ;
-; -0.577 ; magma:MAGMA|round[1] ; magma:MAGMA|right[29]    ; clk          ; clk         ; 1.000        ; -0.016     ; 1.548      ;
-; -0.576 ; magma:MAGMA|round[3] ; magma:MAGMA|left[29]     ; clk          ; clk         ; 1.000        ; -0.016     ; 1.547      ;
-; -0.576 ; magma:MAGMA|round[3] ; magma:MAGMA|right[29]    ; clk          ; clk         ; 1.000        ; -0.016     ; 1.547      ;
-; -0.575 ; pos[0]               ; key[20]                  ; clk          ; clk         ; 1.000        ; -0.039     ; 1.523      ;
-; -0.566 ; magma:MAGMA|round[1] ; magma:MAGMA|left[23]     ; clk          ; clk         ; 1.000        ; -0.046     ; 1.507      ;
-; -0.566 ; magma:MAGMA|round[1] ; magma:MAGMA|right[23]    ; clk          ; clk         ; 1.000        ; -0.046     ; 1.507      ;
-; -0.566 ; magma:MAGMA|round[1] ; magma:MAGMA|left[10]     ; clk          ; clk         ; 1.000        ; -0.046     ; 1.507      ;
-; -0.566 ; magma:MAGMA|round[1] ; magma:MAGMA|right[10]    ; clk          ; clk         ; 1.000        ; -0.046     ; 1.507      ;
-; -0.566 ; magma:MAGMA|round[1] ; magma:MAGMA|left[11]     ; clk          ; clk         ; 1.000        ; -0.046     ; 1.507      ;
-; -0.566 ; magma:MAGMA|round[1] ; magma:MAGMA|right[11]    ; clk          ; clk         ; 1.000        ; -0.046     ; 1.507      ;
-; -0.566 ; magma:MAGMA|round[1] ; magma:MAGMA|left[14]     ; clk          ; clk         ; 1.000        ; -0.046     ; 1.507      ;
-; -0.566 ; magma:MAGMA|round[1] ; magma:MAGMA|right[14]    ; clk          ; clk         ; 1.000        ; -0.046     ; 1.507      ;
-; -0.565 ; magma:MAGMA|round[3] ; magma:MAGMA|left[23]     ; clk          ; clk         ; 1.000        ; -0.046     ; 1.506      ;
-; -0.565 ; magma:MAGMA|round[3] ; magma:MAGMA|right[23]    ; clk          ; clk         ; 1.000        ; -0.046     ; 1.506      ;
-; -0.565 ; magma:MAGMA|round[3] ; magma:MAGMA|left[10]     ; clk          ; clk         ; 1.000        ; -0.046     ; 1.506      ;
-; -0.565 ; magma:MAGMA|round[3] ; magma:MAGMA|right[10]    ; clk          ; clk         ; 1.000        ; -0.046     ; 1.506      ;
-; -0.565 ; magma:MAGMA|round[3] ; magma:MAGMA|left[11]     ; clk          ; clk         ; 1.000        ; -0.046     ; 1.506      ;
-; -0.565 ; magma:MAGMA|round[3] ; magma:MAGMA|right[11]    ; clk          ; clk         ; 1.000        ; -0.046     ; 1.506      ;
-; -0.565 ; magma:MAGMA|round[3] ; magma:MAGMA|left[14]     ; clk          ; clk         ; 1.000        ; -0.046     ; 1.506      ;
-; -0.565 ; magma:MAGMA|round[3] ; magma:MAGMA|right[14]    ; clk          ; clk         ; 1.000        ; -0.046     ; 1.506      ;
-; -0.563 ; magma:MAGMA|round[2] ; magma:MAGMA|left[20]     ; clk          ; clk         ; 1.000        ; -0.024     ; 1.526      ;
-; -0.563 ; magma:MAGMA|round[2] ; magma:MAGMA|right[20]    ; clk          ; clk         ; 1.000        ; -0.024     ; 1.526      ;
-; -0.553 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[16] ; clk          ; clk         ; 1.000        ; -0.023     ; 1.517      ;
-; -0.547 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[16] ; clk          ; clk         ; 1.000        ; -0.023     ; 1.511      ;
-; -0.539 ; pos[0]               ; data_in[106]             ; clk          ; clk         ; 1.000        ; -0.033     ; 1.493      ;
-; -0.531 ; magma:MAGMA|work     ; magma:MAGMA|left[20]     ; clk          ; clk         ; 1.000        ; -0.024     ; 1.494      ;
-; -0.531 ; magma:MAGMA|work     ; magma:MAGMA|right[20]    ; clk          ; clk         ; 1.000        ; -0.024     ; 1.494      ;
-; -0.527 ; magma:MAGMA|round[2] ; magma:MAGMA|left[27]     ; clk          ; clk         ; 1.000        ; -0.025     ; 1.489      ;
-; -0.527 ; magma:MAGMA|round[2] ; magma:MAGMA|right[27]    ; clk          ; clk         ; 1.000        ; -0.025     ; 1.489      ;
-; -0.527 ; magma:MAGMA|round[2] ; magma:MAGMA|left[26]     ; clk          ; clk         ; 1.000        ; -0.025     ; 1.489      ;
-; -0.527 ; magma:MAGMA|round[2] ; magma:MAGMA|right[26]    ; clk          ; clk         ; 1.000        ; -0.025     ; 1.489      ;
-; -0.514 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[48] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.464      ;
-; -0.514 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[28] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.464      ;
-; -0.514 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[63] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.464      ;
-; -0.513 ; pos[2]               ; data_in[106]             ; clk          ; clk         ; 1.000        ; -0.033     ; 1.467      ;
-; -0.512 ; but_r[0]             ; pos[2]                   ; clk          ; clk         ; 1.000        ; -0.032     ; 1.467      ;
-; -0.512 ; but_r[0]             ; pos[1]                   ; clk          ; clk         ; 1.000        ; -0.032     ; 1.467      ;
-; -0.512 ; but_r[0]             ; pos[0]                   ; clk          ; clk         ; 1.000        ; -0.032     ; 1.467      ;
-; -0.510 ; magma:MAGMA|round[2] ; magma:MAGMA|left[22]     ; clk          ; clk         ; 1.000        ; -0.038     ; 1.459      ;
-; -0.510 ; magma:MAGMA|round[2] ; magma:MAGMA|right[22]    ; clk          ; clk         ; 1.000        ; -0.038     ; 1.459      ;
-; -0.508 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[48] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.458      ;
-; -0.508 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[28] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.458      ;
-; -0.508 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[63] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.458      ;
-; -0.507 ; magma:MAGMA|round[1] ; magma:MAGMA|left[17]     ; clk          ; clk         ; 1.000        ; -0.037     ; 1.457      ;
-; -0.507 ; magma:MAGMA|round[1] ; magma:MAGMA|right[17]    ; clk          ; clk         ; 1.000        ; -0.037     ; 1.457      ;
-; -0.506 ; magma:MAGMA|round[3] ; magma:MAGMA|left[17]     ; clk          ; clk         ; 1.000        ; -0.037     ; 1.456      ;
-; -0.506 ; magma:MAGMA|round[3] ; magma:MAGMA|right[17]    ; clk          ; clk         ; 1.000        ; -0.037     ; 1.456      ;
-; -0.500 ; magma:MAGMA|round[0] ; magma:MAGMA|left[20]     ; clk          ; clk         ; 1.000        ; -0.024     ; 1.463      ;
-; -0.500 ; magma:MAGMA|round[0] ; magma:MAGMA|right[20]    ; clk          ; clk         ; 1.000        ; -0.024     ; 1.463      ;
-; -0.499 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[49] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.449      ;
-; -0.499 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[17] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.449      ;
-; -0.499 ; magma:MAGMA|round[1] ; magma:MAGMA|data_out[29] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.449      ;
-; -0.499 ; pos[2]               ; key[136]                 ; clk          ; clk         ; 1.000        ; -0.031     ; 1.455      ;
-; -0.499 ; magma:MAGMA|round[2] ; magma:MAGMA|left[16]     ; clk          ; clk         ; 1.000        ; -0.023     ; 1.463      ;
-; -0.499 ; magma:MAGMA|round[2] ; magma:MAGMA|right[16]    ; clk          ; clk         ; 1.000        ; -0.023     ; 1.463      ;
-; -0.499 ; pos[1]               ; key[20]                  ; clk          ; clk         ; 1.000        ; -0.039     ; 1.447      ;
-; -0.499 ; but_rr[0]            ; pos[2]                   ; clk          ; clk         ; 1.000        ; -0.032     ; 1.454      ;
-; -0.499 ; but_rr[0]            ; pos[1]                   ; clk          ; clk         ; 1.000        ; -0.032     ; 1.454      ;
-; -0.499 ; but_rr[0]            ; pos[0]                   ; clk          ; clk         ; 1.000        ; -0.032     ; 1.454      ;
-; -0.498 ; magma:MAGMA|round[2] ; magma:MAGMA|left[31]     ; clk          ; clk         ; 1.000        ; -0.030     ; 1.455      ;
-; -0.498 ; magma:MAGMA|round[2] ; magma:MAGMA|right[31]    ; clk          ; clk         ; 1.000        ; -0.030     ; 1.455      ;
-; -0.497 ; magma:MAGMA|round[2] ; magma:MAGMA|left[2]      ; clk          ; clk         ; 1.000        ; -0.023     ; 1.461      ;
-; -0.497 ; magma:MAGMA|round[2] ; magma:MAGMA|right[2]     ; clk          ; clk         ; 1.000        ; -0.023     ; 1.461      ;
-; -0.495 ; magma:MAGMA|work     ; magma:MAGMA|left[27]     ; clk          ; clk         ; 1.000        ; -0.025     ; 1.457      ;
-; -0.495 ; magma:MAGMA|work     ; magma:MAGMA|right[27]    ; clk          ; clk         ; 1.000        ; -0.025     ; 1.457      ;
-; -0.495 ; magma:MAGMA|work     ; magma:MAGMA|left[26]     ; clk          ; clk         ; 1.000        ; -0.025     ; 1.457      ;
-; -0.495 ; magma:MAGMA|work     ; magma:MAGMA|right[26]    ; clk          ; clk         ; 1.000        ; -0.025     ; 1.457      ;
-; -0.493 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[49] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.443      ;
-; -0.493 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[17] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.443      ;
-; -0.493 ; magma:MAGMA|round[3] ; magma:MAGMA|data_out[29] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.443      ;
-; -0.491 ; pos[0]               ; key[34]                  ; clk          ; clk         ; 1.000        ; -0.045     ; 1.433      ;
-+--------+----------------------+--------------------------+--------------+-------------+--------------+------------+------------+
++----------------------------------------------------------------------------------------------------------------------------+
+; Fast 1200mV 0C Model Setup: 'clk'                                                                                          ;
++--------+----------------------+----------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node            ; To Node              ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------+----------------------+--------------+-------------+--------------+------------+------------+
+; -2.324 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.046     ; 3.265      ;
+; -2.314 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.046     ; 3.255      ;
+; -2.262 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.046     ; 3.203      ;
+; -2.256 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.046     ; 3.197      ;
+; -2.252 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.046     ; 3.193      ;
+; -2.246 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.046     ; 3.187      ;
+; -2.242 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.046     ; 3.183      ;
+; -2.229 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.046     ; 3.170      ;
+; -2.198 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.333      ;
+; -2.194 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[30] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.329      ;
+; -2.194 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.046     ; 3.135      ;
+; -2.190 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.046     ; 3.131      ;
+; -2.188 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.323      ;
+; -2.184 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[30] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.319      ;
+; -2.161 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.046     ; 3.102      ;
+; -2.157 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.046     ; 3.098      ;
+; -2.136 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.271      ;
+; -2.132 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[30] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.267      ;
+; -2.126 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[28] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.261      ;
+; -2.116 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[28] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.251      ;
+; -2.103 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.238      ;
+; -2.099 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[30] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.234      ;
+; -2.064 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[28] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.199      ;
+; -2.031 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[28] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.166      ;
+; -1.994 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[25] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.129      ;
+; -1.990 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[24] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.125      ;
+; -1.984 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[25] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.119      ;
+; -1.980 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[24] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.115      ;
+; -1.932 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[25] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.067      ;
+; -1.928 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[24] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.063      ;
+; -1.926 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[23] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.061      ;
+; -1.922 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[22] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.057      ;
+; -1.916 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[23] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.051      ;
+; -1.912 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[22] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.047      ;
+; -1.899 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[25] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.034      ;
+; -1.895 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[24] ; clk          ; clk         ; 1.000        ; 0.148      ; 3.030      ;
+; -1.876 ; magma:MAGMA|round[1] ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.059     ; 2.804      ;
+; -1.864 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[23] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.999      ;
+; -1.860 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[22] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.995      ;
+; -1.858 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[21] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.993      ;
+; -1.854 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[20] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.989      ;
+; -1.848 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[21] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.983      ;
+; -1.844 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[20] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.979      ;
+; -1.831 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[23] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.966      ;
+; -1.827 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[22] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.962      ;
+; -1.808 ; magma:MAGMA|round[1] ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.059     ; 2.736      ;
+; -1.804 ; magma:MAGMA|round[1] ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.059     ; 2.732      ;
+; -1.796 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[21] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.931      ;
+; -1.792 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[20] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.927      ;
+; -1.790 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[19] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.925      ;
+; -1.786 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[18] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.921      ;
+; -1.784 ; key[50]              ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.039     ; 2.732      ;
+; -1.782 ; key[32]              ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.046     ; 2.723      ;
+; -1.780 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[19] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.915      ;
+; -1.776 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[18] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.911      ;
+; -1.773 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[13] ; clk          ; clk         ; 1.000        ; -0.039     ; 2.721      ;
+; -1.769 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[12] ; clk          ; clk         ; 1.000        ; -0.039     ; 2.717      ;
+; -1.768 ; key[34]              ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.040     ; 2.715      ;
+; -1.767 ; key[160]             ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.046     ; 2.708      ;
+; -1.763 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[21] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.898      ;
+; -1.763 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[13] ; clk          ; clk         ; 1.000        ; -0.039     ; 2.711      ;
+; -1.759 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[20] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.894      ;
+; -1.759 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[12] ; clk          ; clk         ; 1.000        ; -0.039     ; 2.707      ;
+; -1.753 ; key[2]               ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.040     ; 2.700      ;
+; -1.750 ; magma:MAGMA|round[1] ; magma:MAGMA|temp[31] ; clk          ; clk         ; 1.000        ; 0.135      ; 2.872      ;
+; -1.746 ; magma:MAGMA|round[1] ; magma:MAGMA|temp[30] ; clk          ; clk         ; 1.000        ; 0.135      ; 2.868      ;
+; -1.728 ; key[3]               ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.039     ; 2.676      ;
+; -1.728 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[19] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.863      ;
+; -1.724 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[18] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.859      ;
+; -1.722 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[17] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.857      ;
+; -1.722 ; key[193]             ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.046     ; 2.663      ;
+; -1.718 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[16] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.853      ;
+; -1.716 ; key[50]              ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.039     ; 2.664      ;
+; -1.714 ; key[32]              ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.046     ; 2.655      ;
+; -1.712 ; key[5]               ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.064     ; 2.635      ;
+; -1.712 ; key[50]              ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.039     ; 2.660      ;
+; -1.712 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[17] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.847      ;
+; -1.711 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[13] ; clk          ; clk         ; 1.000        ; -0.039     ; 2.659      ;
+; -1.708 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[16] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.843      ;
+; -1.707 ; magma:MAGMA|round[0] ; magma:MAGMA|temp[12] ; clk          ; clk         ; 1.000        ; -0.039     ; 2.655      ;
+; -1.705 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[11] ; clk          ; clk         ; 1.000        ; -0.039     ; 2.653      ;
+; -1.701 ; magma:MAGMA|round[2] ; magma:MAGMA|temp[10] ; clk          ; clk         ; 1.000        ; -0.039     ; 2.649      ;
+; -1.700 ; key[34]              ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.040     ; 2.647      ;
+; -1.699 ; key[160]             ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.046     ; 2.640      ;
+; -1.695 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[19] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.830      ;
+; -1.695 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[11] ; clk          ; clk         ; 1.000        ; -0.039     ; 2.643      ;
+; -1.692 ; key[227]             ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.039     ; 2.640      ;
+; -1.691 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[18] ; clk          ; clk         ; 1.000        ; 0.148      ; 2.826      ;
+; -1.691 ; magma:MAGMA|round[3] ; magma:MAGMA|temp[10] ; clk          ; clk         ; 1.000        ; -0.039     ; 2.639      ;
+; -1.688 ; key[32]              ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.046     ; 2.629      ;
+; -1.687 ; key[229]             ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.064     ; 2.610      ;
+; -1.685 ; key[2]               ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.040     ; 2.632      ;
+; -1.678 ; magma:MAGMA|round[1] ; magma:MAGMA|temp[28] ; clk          ; clk         ; 1.000        ; 0.135      ; 2.800      ;
+; -1.678 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[13] ; clk          ; clk         ; 1.000        ; -0.039     ; 2.626      ;
+; -1.674 ; magma:MAGMA|round[4] ; magma:MAGMA|temp[12] ; clk          ; clk         ; 1.000        ; -0.039     ; 2.622      ;
+; -1.673 ; key[160]             ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.046     ; 2.614      ;
+; -1.672 ; key[83]              ; magma:MAGMA|temp[29] ; clk          ; clk         ; 1.000        ; -0.243     ; 2.416      ;
+; -1.669 ; key[34]              ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.040     ; 2.616      ;
+; -1.664 ; key[2]               ; magma:MAGMA|temp[26] ; clk          ; clk         ; 1.000        ; -0.040     ; 2.611      ;
+; -1.660 ; key[3]               ; magma:MAGMA|temp[27] ; clk          ; clk         ; 1.000        ; -0.039     ; 2.608      ;
++--------+----------------------+----------------------+--------------+-------------+--------------+------------+------------+
 
 
 +-----------------------------------------------------------------------------------------------------------+
@@ -817,106 +818,106 @@ No paths to report.
 +-------+--------------+--------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node    ; To Node      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+--------------+--------------+--------------+-------------+--------------+------------+------------+
-; 0.174 ; key[241]     ; key[241]     ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; key[209]     ; key[209]     ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; key[240]     ; key[240]     ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; key[176]     ; key[176]     ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; key[112]     ; key[112]     ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; data_in[112] ; data_in[112] ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; key[211]     ; key[211]     ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; key[115]     ; key[115]     ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; key[21]      ; key[21]      ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; key[55]      ; key[55]      ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; data_in[126] ; data_in[126] ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; data_in[94]  ; data_in[94]  ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; key[35]      ; key[35]      ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; data_in[36]  ; data_in[36]  ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; data_in[37]  ; data_in[37]  ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
 ; 0.174 ; key[135]     ; key[135]     ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; key[71]      ; key[71]      ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; data_in[39]  ; data_in[39]  ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
+; 0.174 ; key[39]      ; key[39]      ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
 ; 0.174 ; key[138]     ; key[138]     ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; data_in[10]  ; data_in[10]  ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; key[232]     ; key[232]     ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; key[104]     ; key[104]     ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.174 ; data_in[9]   ; data_in[9]   ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
-; 0.175 ; key[113]     ; key[113]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[81]      ; key[81]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[81]  ; data_in[81]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[208]     ; key[208]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[80]  ; data_in[80]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[83]  ; data_in[83]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[242]     ; key[242]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[178]     ; key[178]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[210]     ; key[210]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[82]      ; key[82]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[50]  ; data_in[50]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[21]  ; data_in[21]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[119] ; data_in[119] ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[87]  ; data_in[87]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[23]  ; data_in[23]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[22]  ; data_in[22]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.174 ; key[234]     ; key[234]     ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
+; 0.174 ; key[202]     ; key[202]     ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
+; 0.174 ; key[74]      ; key[74]      ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
+; 0.174 ; key[37]      ; key[37]      ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
+; 0.174 ; key[192]     ; key[192]     ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
+; 0.174 ; key[128]     ; key[128]     ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
+; 0.174 ; key[96]      ; key[96]      ; clk          ; clk         ; 0.000        ; 0.049      ; 0.307      ;
+; 0.175 ; key[148]     ; key[148]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[116]     ; key[116]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[152]     ; key[152]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[216]     ; key[216]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[184]     ; key[184]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[56]      ; key[56]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[111]     ; key[111]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[185]     ; key[185]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[217]     ; key[217]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[89]      ; key[89]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
 ; 0.175 ; key[57]      ; key[57]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[88]  ; data_in[88]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[90]  ; data_in[90]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[58]  ; data_in[58]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[126]     ; key[126]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[30]      ; key[30]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[62]      ; key[62]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[158]     ; key[158]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[28]      ; key[28]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[92]  ; data_in[92]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[60]      ; key[60]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[60]  ; data_in[60]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[63]      ; key[63]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[157]     ; key[157]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[29]      ; key[29]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[61]      ; key[61]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[2]       ; key[2]       ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[2]   ; data_in[2]   ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[96]      ; key[96]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[0]       ; key[0]       ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[64]  ; data_in[64]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[0]   ; data_in[0]   ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[32]  ; data_in[32]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[32]      ; key[32]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[161]     ; key[161]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[97]      ; key[97]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[97]  ; data_in[97]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[1]       ; key[1]       ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[1]   ; data_in[1]   ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[3]       ; key[3]       ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[35]  ; data_in[35]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[206]     ; key[206]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[142]     ; key[142]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[123]     ; key[123]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[113]     ; key[113]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[49]      ; key[49]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[209]     ; key[209]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[83]      ; key[83]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[112]     ; key[112]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[144]     ; key[144]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[208]     ; key[208]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[176]     ; key[176]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[137]     ; key[137]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[218]     ; key[218]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[186]     ; key[186]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
 ; 0.175 ; key[134]     ; key[134]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[102]     ; key[102]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[102] ; data_in[102] ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[6]       ; key[6]       ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[70]      ; key[70]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[6]   ; data_in[6]   ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[38]      ; key[38]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[132]     ; key[132]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[100]     ; key[100]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[100] ; data_in[100] ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[4]       ; key[4]       ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[68]      ; key[68]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[68]  ; data_in[68]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[4]   ; data_in[4]   ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[36]      ; key[36]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[133]     ; key[133]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[101]     ; key[101]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[101] ; data_in[101] ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[5]       ; key[5]       ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[69]      ; key[69]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[69]  ; data_in[69]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[5]   ; data_in[5]   ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[37]      ; key[37]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[7]       ; key[7]       ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[71]  ; data_in[71]  ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; data_in[7]   ; data_in[7]   ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[39]      ; key[39]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[106]     ; key[106]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[10]      ; key[10]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
-; 0.175 ; key[74]      ; key[74]      ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[141]     ; key[141]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[109]     ; key[109]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[205]     ; key[205]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[151]     ; key[151]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.175 ; key[119]     ; key[119]     ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.176 ; key[249]     ; key[249]     ; clk          ; clk         ; 0.000        ; 0.047      ; 0.307      ;
+; 0.176 ; key[211]     ; key[211]     ; clk          ; clk         ; 0.000        ; 0.047      ; 0.307      ;
+; 0.176 ; key[179]     ; key[179]     ; clk          ; clk         ; 0.000        ; 0.047      ; 0.307      ;
+; 0.176 ; key[243]     ; key[243]     ; clk          ; clk         ; 0.000        ; 0.047      ; 0.307      ;
+; 0.176 ; key[118]     ; key[118]     ; clk          ; clk         ; 0.000        ; 0.047      ; 0.307      ;
+; 0.176 ; key[150]     ; key[150]     ; clk          ; clk         ; 0.000        ; 0.047      ; 0.307      ;
+; 0.176 ; key[149]     ; key[149]     ; clk          ; clk         ; 0.000        ; 0.047      ; 0.307      ;
+; 0.176 ; key[53]      ; key[53]      ; clk          ; clk         ; 0.000        ; 0.047      ; 0.307      ;
+; 0.176 ; key[250]     ; key[250]     ; clk          ; clk         ; 0.000        ; 0.047      ; 0.307      ;
+; 0.176 ; key[154]     ; key[154]     ; clk          ; clk         ; 0.000        ; 0.047      ; 0.307      ;
+; 0.182 ; data_in[103] ; data_in[103] ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; data_in[71]  ; data_in[71]  ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; data_in[101] ; data_in[101] ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; data_in[69]  ; data_in[69]  ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; data_in[100] ; data_in[100] ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; data_in[68]  ; data_in[68]  ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; data_in[1]   ; data_in[1]   ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; data_in[35]  ; data_in[35]  ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; data_in[2]   ; data_in[2]   ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; data_in[34]  ; data_in[34]  ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; data_in[38]  ; data_in[38]  ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; key[10]      ; key[10]      ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; key[170]     ; key[170]     ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; data_in[39]  ; data_in[39]  ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; data_in[7]   ; data_in[7]   ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; data_in[37]  ; data_in[37]  ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; data_in[36]  ; data_in[36]  ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; key[129]     ; key[129]     ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; data_in[3]   ; data_in[3]   ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; data_in[33]  ; data_in[33]  ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; data_in[0]   ; data_in[0]   ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; data_in[32]  ; data_in[32]  ; clk          ; clk         ; 0.000        ; 0.041      ; 0.307      ;
+; 0.183 ; data_in[82]  ; data_in[82]  ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[81]  ; data_in[81]  ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[119] ; data_in[119] ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[87]  ; data_in[87]  ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[123] ; data_in[123] ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[91]  ; data_in[91]  ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[121] ; data_in[121] ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[122] ; data_in[122] ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[90]  ; data_in[90]  ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[120] ; data_in[120] ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[88]  ; data_in[88]  ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[126] ; data_in[126] ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[94]  ; data_in[94]  ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[124] ; data_in[124] ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[92]  ; data_in[92]  ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[127] ; data_in[127] ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[95]  ; data_in[95]  ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[99]  ; data_in[99]  ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[67]  ; data_in[67]  ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[97]  ; data_in[97]  ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[65]  ; data_in[65]  ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[98]  ; data_in[98]  ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[66]  ; data_in[66]  ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[96]  ; data_in[96]  ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[102] ; data_in[102] ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[70]  ; data_in[70]  ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
+; 0.183 ; data_in[107] ; data_in[107] ; clk          ; clk         ; 0.000        ; 0.040      ; 0.307      ;
 +-------+--------------+--------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -926,16 +927,16 @@ No paths to report.
 No synchronizer chains to report.
 
 
-+--------------------------------------------------------------------------------+
-; Multicorner Timing Analysis Summary                                            ;
-+------------------+----------+-------+----------+---------+---------------------+
-; Clock            ; Setup    ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
-+------------------+----------+-------+----------+---------+---------------------+
-; Worst-case Slack ; -2.388   ; 0.174 ; N/A      ; N/A     ; -3.000              ;
-;  clk             ; -2.388   ; 0.174 ; N/A      ; N/A     ; -3.000              ;
-; Design-wide TNS  ; -892.031 ; 0.0   ; 0.0      ; 0.0     ; -713.605            ;
-;  clk             ; -892.031 ; 0.000 ; N/A      ; N/A     ; -713.605            ;
-+------------------+----------+-------+----------+---------+---------------------+
++---------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                             ;
++------------------+-----------+-------+----------+---------+---------------------+
+; Clock            ; Setup     ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+-----------+-------+----------+---------+---------------------+
+; Worst-case Slack ; -5.595    ; 0.174 ; N/A      ; N/A     ; -3.000              ;
+;  clk             ; -5.595    ; 0.174 ; N/A      ; N/A     ; -3.000              ;
+; Design-wide TNS  ; -2011.025 ; 0.0   ; 0.0      ; 0.0     ; -836.965            ;
+;  clk             ; -2011.025 ; 0.000 ; N/A      ; N/A     ; -836.965            ;
++------------------+-----------+-------+----------+---------+---------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1025,15 +1026,15 @@ No synchronizer chains to report.
 ; status[1]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; status[0]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; status[2]               ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; data_wire[1]            ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; data_wire[3]            ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; data_wire[0]            ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; data_wire[2]            ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; data_wire[1]            ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; data_wire[3]            ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; clk                     ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; reset                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; bat[1]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; bat[0]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; bat[2]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; bat[0]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; bat[1]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; ~ALTERA_ASDO_DATA1~     ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; ~ALTERA_FLASH_nCE_nCSO~ ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; ~ALTERA_DATA0~          ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
@@ -1270,7 +1271,7 @@ No synchronizer chains to report.
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; clk        ; clk      ; 4199     ; 0        ; 0        ; 0        ;
+; clk        ; clk      ; 19168    ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -1280,7 +1281,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; clk        ; clk      ; 4199     ; 0        ; 0        ; 0        ;
+; clk        ; clk      ; 19168    ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -1305,7 +1306,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
 ; Unconstrained Input Ports       ; 15    ; 15   ;
-; Unconstrained Input Port Paths  ; 3764  ; 3764 ;
+; Unconstrained Input Port Paths  ; 3860  ; 3860 ;
 ; Unconstrained Output Ports      ; 64    ; 64   ;
 ; Unconstrained Output Port Paths ; 4009  ; 4009 ;
 +---------------------------------+-------+------+
@@ -1516,7 +1517,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Wed Dec 11 19:34:29 2024
+    Info: Processing started: Wed Dec 11 20:32:31 2024
 Info: Command: quartus_sta CryptoDef -c CryptoDef
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -1533,10 +1534,10 @@ Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1200mV 85C Model
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -2.388
+Info (332146): Worst-case setup slack is -5.595
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.388            -892.031 clk 
+    Info (332119):    -5.595           -2011.025 clk 
 Info (332146): Worst-case hold slack is 0.385
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
@@ -1546,17 +1547,17 @@ Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000            -713.605 clk 
+    Info (332119):    -3.000            -836.965 clk 
 Info: Analyzing Slow 1200mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -2.110
+Info (332146): Worst-case setup slack is -4.979
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.110            -769.076 clk 
+    Info (332119):    -4.979           -1785.205 clk 
 Info (332146): Worst-case hold slack is 0.338
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
@@ -1566,15 +1567,15 @@ Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000            -713.605 clk 
+    Info (332119):    -3.000            -836.965 clk 
 Info: Analyzing Fast 1200mV 0C Model
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -0.650
+Info (332146): Worst-case setup slack is -2.324
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.650            -163.482 clk 
+    Info (332119):    -2.324            -675.884 clk 
 Info (332146): Worst-case hold slack is 0.174
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
@@ -1584,13 +1585,13 @@ Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000            -594.322 clk 
+    Info (332119):    -3.000            -693.918 clk 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 4973 megabytes
-    Info: Processing ended: Wed Dec 11 19:34:34 2024
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Peak virtual memory: 4970 megabytes
+    Info: Processing ended: Wed Dec 11 20:32:40 2024
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:02
 
 

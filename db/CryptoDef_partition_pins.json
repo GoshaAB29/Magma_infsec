@@ -288,19 +288,19 @@
 					"strict" : false
 				},
 				{
-					"name" : "data_wire[1]",
-					"strict" : false
-				},
-				{
-					"name" : "data_wire[3]",
-					"strict" : false
-				},
-				{
 					"name" : "data_wire[0]",
 					"strict" : false
 				},
 				{
 					"name" : "data_wire[2]",
+					"strict" : false
+				},
+				{
+					"name" : "data_wire[1]",
+					"strict" : false
+				},
+				{
+					"name" : "data_wire[3]",
 					"strict" : false
 				},
 				{
@@ -312,7 +312,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "bat[1]",
+					"name" : "bat[2]",
 					"strict" : false
 				},
 				{
@@ -320,7 +320,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "bat[2]",
+					"name" : "bat[1]",
 					"strict" : false
 				}
 			]

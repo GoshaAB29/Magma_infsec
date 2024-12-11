@@ -12,7 +12,7 @@ module magma (
     reg  [31:0] left, right;           // Левый и правый 32-битные блоки
     wire [31:0] round_keys [0:31];     // Раундовые ключи
     reg  [5:0]  round;                 // номер текущего раунда (0-31)
-    reg  [31:0] temp, s_result;        //
+    reg  [31:0] temp, temp_2, s_result;        //
     //wire [31:0] sbox_output;         // выход S-блоков
     reg work;                          // статус работы блока
 
@@ -89,12 +89,12 @@ module magma (
                 end else if (round <= 32) begin
                     temp <= right + round_keys[round - 1];
 
-                    s_result <= {SBOX[7][temp[28+:4]], SBOX[6][temp[24+:4]],
+                    temp_2 <= {SBOX[7][temp[28+:4]], SBOX[6][temp[24+:4]],
                                  SBOX[5][temp[20+:4]], SBOX[4][temp[16+:4]],
                                  SBOX[3][temp[12+:4]], SBOX[2][temp[8+:4]],
                                  SBOX[1][temp[4+:4]],  SBOX[0][temp[0+:4]]};
 
-                    s_result <= {s_result[21:0], s_result[31:22]}; // циклический сдвиг на 11 бит
+                    s_result <= {temp_2[21:0], temp_2[31:22]}; // циклический сдвиг на 11 бит
                     right <= left ^ s_result;
                     left <= right;
                     round <= round + 1;
@@ -102,7 +102,9 @@ module magma (
                     data_out <= {right, left};
                     done <= 1;
                 end
-            end
+            end 
+				else
+					round <= 0;
         end
 
 endmodule

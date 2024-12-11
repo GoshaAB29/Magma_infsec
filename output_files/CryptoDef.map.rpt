@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CryptoDef
-Wed Dec 11 19:33:59 2024
+Wed Dec 11 20:31:51 2024
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -13,21 +13,20 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. General Register Statistics
- 10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Port Connectivity Checks: "hex_to_7seg:ht73b"
- 12. Port Connectivity Checks: "hex_to_7seg:ht72b"
- 13. Port Connectivity Checks: "hex_to_7seg:ht71b"
- 14. Port Connectivity Checks: "hex_to_7seg:ht70b"
- 15. Port Connectivity Checks: "hex_to_7seg:ht73a"
- 16. Port Connectivity Checks: "hex_to_7seg:ht72a"
- 17. Port Connectivity Checks: "hex_to_7seg:ht71a"
- 18. Port Connectivity Checks: "hex_to_7seg:ht70a"
- 19. Port Connectivity Checks: "magma:MAGMA"
- 20. Post-Synthesis Netlist Statistics for Top Partition
- 21. Elapsed Time Per Partition
- 22. Analysis & Synthesis Messages
+  8. General Register Statistics
+  9. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 10. Port Connectivity Checks: "hex_to_7seg:ht73b"
+ 11. Port Connectivity Checks: "hex_to_7seg:ht72b"
+ 12. Port Connectivity Checks: "hex_to_7seg:ht71b"
+ 13. Port Connectivity Checks: "hex_to_7seg:ht70b"
+ 14. Port Connectivity Checks: "hex_to_7seg:ht73a"
+ 15. Port Connectivity Checks: "hex_to_7seg:ht72a"
+ 16. Port Connectivity Checks: "hex_to_7seg:ht71a"
+ 17. Port Connectivity Checks: "hex_to_7seg:ht70a"
+ 18. Port Connectivity Checks: "magma:MAGMA"
+ 19. Post-Synthesis Netlist Statistics for Top Partition
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
 
 
 
@@ -54,15 +53,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Dec 11 19:33:58 2024       ;
+; Analysis & Synthesis Status        ; Successful - Wed Dec 11 20:31:50 2024       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; CryptoDef                                   ;
 ; Top-level Entity Name              ; Data_driver                                 ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 1,618                                       ;
-;     Total combinational functions  ; 1,548                                       ;
-;     Dedicated logic registers      ; 553                                         ;
-; Total registers                    ; 553                                         ;
+; Total logic elements               ; 1,884                                       ;
+;     Total combinational functions  ; 1,782                                       ;
+;     Dedicated logic registers      ; 649                                         ;
+; Total registers                    ; 649                                         ;
 ; Total pins                         ; 81                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -170,7 +169,7 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
+;     Processor 2            ;   0.1%      ;
 ;     Processor 3            ;   0.0%      ;
 ;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
@@ -196,20 +195,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 1,618     ;
+; Estimated Total logic elements              ; 1,884     ;
 ;                                             ;           ;
-; Total combinational functions               ; 1548      ;
+; Total combinational functions               ; 1782      ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 1056      ;
-;     -- 3 input functions                    ; 370       ;
-;     -- <=2 input functions                  ; 122       ;
+;     -- 4 input functions                    ; 1253      ;
+;     -- 3 input functions                    ; 399       ;
+;     -- <=2 input functions                  ; 130       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 1520      ;
-;     -- arithmetic mode                      ; 28        ;
+;     -- normal mode                          ; 1723      ;
+;     -- arithmetic mode                      ; 59        ;
 ;                                             ;           ;
-; Total registers                             ; 553       ;
-;     -- Dedicated logic registers            ; 553       ;
+; Total registers                             ; 649       ;
+;     -- Dedicated logic registers            ; 649       ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 81        ;
@@ -217,9 +216,9 @@ https://fpgasoftware.intel.com/eula.
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 553       ;
-; Total fan-out                               ; 7446      ;
-; Average fan-out                             ; 3.29      ;
+; Maximum fan-out                             ; 649       ;
+; Total fan-out                               ; 8619      ;
+; Average fan-out                             ; 3.32      ;
 +---------------------------------------------+-----------+
 
 
@@ -228,29 +227,18 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name            ; Entity Name ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------+-------------+--------------+
-; |Data_driver               ; 1548 (1291)         ; 553 (417)                 ; 0           ; 0            ; 0       ; 0         ; 81   ; 0            ; |Data_driver                   ; Data_driver ; work         ;
-;    |hex_to_7seg:ht70a|     ; 23 (23)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Data_driver|hex_to_7seg:ht70a ; hex_to_7seg ; work         ;
+; |Data_driver               ; 1782 (1285)         ; 649 (417)                 ; 0           ; 0            ; 0       ; 0         ; 81   ; 0            ; |Data_driver                   ; Data_driver ; work         ;
+;    |hex_to_7seg:ht70a|     ; 24 (24)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Data_driver|hex_to_7seg:ht70a ; hex_to_7seg ; work         ;
 ;    |hex_to_7seg:ht70b|     ; 23 (23)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Data_driver|hex_to_7seg:ht70b ; hex_to_7seg ; work         ;
-;    |hex_to_7seg:ht71a|     ; 24 (24)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Data_driver|hex_to_7seg:ht71a ; hex_to_7seg ; work         ;
-;    |hex_to_7seg:ht71b|     ; 21 (21)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Data_driver|hex_to_7seg:ht71b ; hex_to_7seg ; work         ;
-;    |hex_to_7seg:ht72a|     ; 23 (23)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Data_driver|hex_to_7seg:ht72a ; hex_to_7seg ; work         ;
-;    |hex_to_7seg:ht72b|     ; 21 (21)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Data_driver|hex_to_7seg:ht72b ; hex_to_7seg ; work         ;
+;    |hex_to_7seg:ht71a|     ; 22 (22)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Data_driver|hex_to_7seg:ht71a ; hex_to_7seg ; work         ;
+;    |hex_to_7seg:ht71b|     ; 23 (23)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Data_driver|hex_to_7seg:ht71b ; hex_to_7seg ; work         ;
+;    |hex_to_7seg:ht72a|     ; 22 (22)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Data_driver|hex_to_7seg:ht72a ; hex_to_7seg ; work         ;
+;    |hex_to_7seg:ht72b|     ; 23 (23)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Data_driver|hex_to_7seg:ht72b ; hex_to_7seg ; work         ;
 ;    |hex_to_7seg:ht73a|     ; 22 (22)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Data_driver|hex_to_7seg:ht73a ; hex_to_7seg ; work         ;
 ;    |hex_to_7seg:ht73b|     ; 22 (22)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Data_driver|hex_to_7seg:ht73b ; hex_to_7seg ; work         ;
-;    |magma:MAGMA|           ; 78 (78)             ; 136 (136)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Data_driver|magma:MAGMA       ; magma       ; work         ;
+;    |magma:MAGMA|           ; 316 (316)           ; 232 (232)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Data_driver|magma:MAGMA       ; magma       ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; magma:MAGMA|s_result[1..31]            ; Merged with magma:MAGMA|s_result[0]    ;
-; magma:MAGMA|s_result[0]                ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 32 ;                                        ;
-+----------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -258,33 +246,34 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 553   ;
+; Total registers                              ; 649   ;
 ; Number of registers using Synchronous Clear  ; 26    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 72    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 521   ;
+; Number of registers using Clock Enable       ; 611   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                  ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output        ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
-; 3:1                ; 256 bits  ; 512 LEs       ; 256 LEs              ; 256 LEs                ; Yes        ; |Data_driver|key[170]             ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |Data_driver|pos[2]               ;
-; 3:1                ; 128 bits  ; 256 LEs       ; 128 LEs              ; 128 LEs                ; Yes        ; |Data_driver|data_in[1]           ;
-; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |Data_driver|magma:MAGMA|round[3] ;
-; 3:1                ; 64 bits   ; 128 LEs       ; 64 LEs               ; 64 LEs                 ; Yes        ; |Data_driver|magma:MAGMA|left[21] ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |Data_driver|ShiftLeft1           ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |Data_driver|ShiftLeft1           ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Data_driver|Gr_pos_led           ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Data_driver|Gr_pos_led           ;
-; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |Data_driver|ShiftRight3          ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 320 LEs              ; 64 LEs                 ; No         ; |Data_driver|ShiftRight3          ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
+; 3:1                ; 256 bits  ; 512 LEs       ; 256 LEs              ; 256 LEs                ; Yes        ; |Data_driver|key[45]               ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |Data_driver|pos[2]                ;
+; 3:1                ; 128 bits  ; 256 LEs       ; 128 LEs              ; 128 LEs                ; Yes        ; |Data_driver|data_in[79]           ;
+; 3:1                ; 64 bits   ; 128 LEs       ; 64 LEs               ; 64 LEs                 ; Yes        ; |Data_driver|magma:MAGMA|right[17] ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |Data_driver|magma:MAGMA|round[2]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |Data_driver|ShiftLeft1            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |Data_driver|ShiftLeft1            ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Data_driver|Gr_pos_led            ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Data_driver|Gr_pos_led            ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |Data_driver|ShiftRight3           ;
+; 32:1               ; 32 bits   ; 672 LEs       ; 160 LEs              ; 512 LEs                ; No         ; |Data_driver|magma:MAGMA|Mux7      ;
+; 18:1               ; 32 bits   ; 384 LEs       ; 320 LEs              ; 64 LEs                 ; No         ; |Data_driver|ShiftRight3           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -375,25 +364,26 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 81                          ;
-; cycloneiii_ff         ; 553                         ;
-;     CLR               ; 2                           ;
-;     ENA               ; 449                         ;
-;     ENA CLR           ; 70                          ;
+; cycloneiii_ff         ; 649                         ;
+;     CLR               ; 8                           ;
+;     ENA               ; 545                         ;
+;     ENA CLR           ; 64                          ;
 ;     ENA SCLR          ; 2                           ;
 ;     SCLR              ; 24                          ;
 ;     plain             ; 6                           ;
-; cycloneiii_lcell_comb ; 1550                        ;
-;     arith             ; 28                          ;
+; cycloneiii_lcell_comb ; 1784                        ;
+;     arith             ; 59                          ;
 ;         2 data inputs ; 28                          ;
-;     normal            ; 1522                        ;
+;         3 data inputs ; 31                          ;
+;     normal            ; 1725                        ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 3                           ;
-;         2 data inputs ; 92                          ;
-;         3 data inputs ; 370                         ;
-;         4 data inputs ; 1056                        ;
+;         2 data inputs ; 100                         ;
+;         3 data inputs ; 368                         ;
+;         4 data inputs ; 1253                        ;
 ;                       ;                             ;
 ; Max LUT depth         ; 14.00                       ;
-; Average LUT depth     ; 8.54                        ;
+; Average LUT depth     ; 8.30                        ;
 +-----------------------+-----------------------------+
 
 
@@ -402,7 +392,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:03     ;
+; Top            ; 00:00:06     ;
 +----------------+--------------+
 
 
@@ -412,40 +402,40 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Wed Dec 11 19:33:40 2024
+    Info: Processing started: Wed Dec 11 20:31:23 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CryptoDef -c CryptoDef
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
 Info (12021): Found 2 design units, including 2 entities, in source file data_driver.v
     Info (12023): Found entity 1: Data_driver File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 1
-    Info (12023): Found entity 2: hex_to_7seg File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 170
+    Info (12023): Found entity 2: hex_to_7seg File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 171
 Info (12021): Found 1 design units, including 1 entities, in source file magma.v
     Info (12023): Found entity 1: magma File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/magma.v Line: 1
 Info (12127): Elaborating entity "Data_driver" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at Data_driver.v(69): truncated value with size 4 to match size of target (3) File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 69
-Warning (10230): Verilog HDL assignment warning at Data_driver.v(71): truncated value with size 32 to match size of target (3) File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 71
-Warning (10230): Verilog HDL assignment warning at Data_driver.v(73): truncated value with size 32 to match size of target (3) File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 73
-Warning (10230): Verilog HDL assignment warning at Data_driver.v(84): truncated value with size 256 to match size of target (128) File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 84
-Warning (10230): Verilog HDL assignment warning at Data_driver.v(113): truncated value with size 32 to match size of target (24) File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 113
+Warning (10230): Verilog HDL assignment warning at Data_driver.v(70): truncated value with size 4 to match size of target (3) File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 70
+Warning (10230): Verilog HDL assignment warning at Data_driver.v(72): truncated value with size 32 to match size of target (3) File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 72
+Warning (10230): Verilog HDL assignment warning at Data_driver.v(74): truncated value with size 32 to match size of target (3) File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 74
+Warning (10230): Verilog HDL assignment warning at Data_driver.v(85): truncated value with size 256 to match size of target (128) File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 85
+Warning (10230): Verilog HDL assignment warning at Data_driver.v(114): truncated value with size 32 to match size of target (24) File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 114
 Warning (10034): Output port "s_led" at Data_driver.v(4) has no driver File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 4
-Info (12128): Elaborating entity "magma" for hierarchy "magma:MAGMA" File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 130
+Info (12128): Elaborating entity "magma" for hierarchy "magma:MAGMA" File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 131
 Warning (10230): Verilog HDL assignment warning at magma.v(100): truncated value with size 32 to match size of target (6) File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/magma.v Line: 100
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "SBOX" into its bus
-Info (12128): Elaborating entity "hex_to_7seg" for hierarchy "hex_to_7seg:ht70a" File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 146
+Info (12128): Elaborating entity "hex_to_7seg" for hierarchy "hex_to_7seg:ht70a" File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 147
 Warning (12241): 9 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "s_led" is stuck at GND File: //wsl.localhost/Ubuntu/home/nik/extra/ex_ex/Zaschita_Huiny_Podgect/Data_driver.v Line: 4
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1699 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1965 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 16 input pins
     Info (21059): Implemented 65 output pins
-    Info (21061): Implemented 1618 logic cells
+    Info (21061): Implemented 1884 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 11 warnings
-    Info: Peak virtual memory: 4843 megabytes
-    Info: Processing ended: Wed Dec 11 19:33:59 2024
-    Info: Elapsed time: 00:00:19
-    Info: Total CPU time (on all processors): 00:00:13
+    Info: Peak virtual memory: 4856 megabytes
+    Info: Processing ended: Wed Dec 11 20:31:51 2024
+    Info: Elapsed time: 00:00:28
+    Info: Total CPU time (on all processors): 00:00:19
 
 
