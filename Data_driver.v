@@ -35,6 +35,12 @@ wire data_out_set = ~status[0] & ~status[1] & status[2];
 
 wire set_on = data_set | key_set;
 
+assign mode_pos_led[0] = ~key_set & ~ data_out_set;
+assign mode_pos_led[1] = key_set;
+assign mode_pos_led[2] = data_out_set;
+
+assign Gr_pos_led = 4'b1 << gl_pos_data;
+
 //Bat_drv============================
 wire [2:0] push;
 
