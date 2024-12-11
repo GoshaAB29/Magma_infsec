@@ -8,12 +8,16 @@ module magma (
     output reg          done           // финиш
 );
 
-    // Внутренние регистры
+    // Внутренние регистры и провода
     reg  [31:0] left, right;           // Левый и правый 32-битные блоки
     wire [31:0] round_keys [0:31];     // Раундовые ключи
-    reg  [4:0] round;                  // номер текущего раунда (0-31)
+    reg  [5:0]  round;                  // номер текущего раунда (0-31)
     reg  [31:0] temp, s_result;        //
-    wire [31:0] sbox_output;           // выход S-блоков
+    //wire [31:0] sbox_output;           // выход S-блоков
+
+    // провода S-блоков
+    //wire [31 : 0] apply_sbox;
+    //wire [3  : 0] nibble [7 : 0];
 
     // инициализация S-блоков
     wire [3:0] SBOX [0:7][0:15];
@@ -50,59 +54,45 @@ module magma (
             SBOX[7][8],SBOX[7][9],SBOX[7][10],SBOX[7][11],SBOX[7][12],SBOX[7][13],SBOX[7][14],SBOX[7][15]}
         =   {4'd1, 4'd7, 4'd14, 4'd13, 4'd0, 4'd5, 4'd8, 4'd3, 4'd4, 4'd15, 4'd10, 4'd6, 4'd9, 4'd12, 4'd11, 4'd2};
 
-
-    genvar i;
-    generate
+        genvar i;
+        generate
         for (i = 0; i < 32; i = i + 1) begin : gen_round_keys
             if (i < 24) begin
-                assign round_keys[i] = key[255 - (i % 8) * 32 : 255 - (i % 8) * 32 - 32];
+                assign round_keys[i] = key[255 - (i % 8) * 32 -: 32];
             end else begin
-                assign round_keys[i] = key[255 - (7 - i % 8) * 32 : 255 - (7 - i % 8) * 32 - 32];
-            end
+            assign round_keys[i] = key[255 - (7 - i % 8) * 32 -: 32];
         end
-    endgenerate
+        end
+        endgenerate
 
- 
-    always @(posedge clk or negedge reset_) begin
+        always @(posedge clk or negedge reset_) begin
         if (~reset_) begin
-            left  <= 32'b0;
-            right <= 32'b0;
-            round <= 0;
-            done  <= 1'b0;
+            left  <= 0;
+        right <= 0;
+        round <= 0;
+        done  <= 0;
         end else if (start) begin
-            if (round == 0) begin
-                // left & rights part init
-                left  <= data_in[63:32];
-                right <= data_in[31:0];
-                round <= 1;
-                done  <= 1'b0;
-            end else if (round <= 32) begin
-                // temp < = (right + round_keys[round - 1]) % (2 ** 32);  // TODO
+        if (round == 0) begin
+            left  <= data_in[63:32];
+        right <= data_in[31:0];
+        round <= 1;
+        done  <= 0;
+        end else if (round <= 32) begin
+        temp <= right + round_keys[round - 1];
 
-                //s_result < = {apply_sbox(temp)[20:0], apply_sbox(temp)[31:21]}; // TODO
+        s_result <= {SBOX[7][temp[28+:4]], SBOX[6][temp[24+:4]],
+            SBOX[5][temp[20+:4]], SBOX[4][temp[16+:4]],
+            SBOX[3][temp[12+:4]], SBOX[2][temp[8+:4]],
+            SBOX[1][temp[4+:4]],  SBOX[0][temp[0+:4]]};
 
-                right <= left ^ s_result;                          // XOR с левой частью
-                left <= right;                                     // Обновление левой части
-                round <= round + 1;
+            s_result <= {s_result[21:0], s_result[31:22]}; // Сдвиг на 11 бит
+            right <= left ^ s_result;
+            left <= right;
+            round <= round + 1;
             end else begin
-                data_out <= {right, left};
-                done <= 1'b1;
+            data_out <= {right, left};
+            done <= 1;
             end
-        end
-    end
-
-    // Применение S-блоков
-    function [31:0] apply_sbox (
-        input [31:0] data
-    );
-        genvar j;
-        reg [3:0] nibble;
-        begin
-            generate for (j = 0; j < 8; j = j + 1) begin
-                nibble = data[j * 4 : j * 4 + 4];
-                apply_sbox[j * 4 : j * 4 + 4] = SBOX[j][nibble];
             end
-        end
-    endfunction
-
-endmodule
+            end
+            endmodule
