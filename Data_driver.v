@@ -6,10 +6,12 @@ module Data_driver(
     input wire [3:0] data_wire,
     input wire [3:0] gl_pos_data,
 
+    input wire [2:0] status,
+
     input wire [2:0] bat,
 
     output wire [3:0] Gr_pos_led,
-    output wire [8:0] L_pos_led,
+    output wire [2:0] mode_pos_led,
 
     output wire [6:0] A_3seg7,
     output wire [6:0] A_2seg7,
@@ -26,6 +28,12 @@ reg [127:0] data_in;
 reg [127:0] data_out;
 
 reg [127:0] key;
+
+wire data_set = status[0];
+wire key_set = ~status[0] & status[1];
+wire data_out_set = ~status[0] & ~status[1] & status[2];
+
+wire set_on = data_set | key_set;
 
 //Bat_drv============================
 wire [2:0] push;
@@ -49,11 +57,11 @@ end
 reg [2:0] pos;
 
 always @(posedge clk) begin
-    if(~reset)
-        pos <= 3'b0;
-    else if (left & ~rigt & ~set)
+    if(~reset) begin
+        pos <= 4'b0;
+    end else if (left & ~rigt & ~set & set_on)
         pos <= pos + 1;
-    else if (~left & rigt & ~set)
+    else if (~left & rigt & ~set & set_on)
         pos <= pos - 1;
 end
 //===================================
@@ -65,18 +73,41 @@ wire [127:0] mask = 128'hF << full_pos;
 
 wire [127:0]   L_new_data = { 4*8{data_wire}};
 
-wire [127:0] new_data = (data_in & ~mask) | (L_new_data & mask); 
+wire [127:0] new_data_in = (data_in & ~mask) | (L_new_data & mask); 
 
 always @(posedge clk) begin
     if(~reset) begin
-        data_in <= 128'h0000000A0000000B0000000C0000000D;
-    end else if(set)
-        data_in <= new_data;
+        data_in <= 128'h0;
+    end else if(set & data_set)
+        data_in <= new_data_in;
+end
+//===================================
+
+//key_in=============================
+wire [127:0] new_key = (key & ~mask) | (L_new_data & mask); 
+
+always @(posedge clk) begin
+    if(~reset) begin
+        key <= 128'b0;
+    end else if(set & key_set)
+        key <= new_key;
+end
+//===================================
+
+//time===============================
+reg[23:0] blinker;
+wire see = blinker[23];
+
+always @(posedge clk) begin
+    if(~reset)
+        blinker <= 0;
+    else
+        blinker <= blinker + 1;
 end
 //===================================
 
 //===================================
-wire [127:0] data = data_in;
+wire [127:0] data = (data_set)? new_data_in: (key_set)? new_key: (data_out_set)? data_out: data_in;
 wire [31:0] shift = (gl_pos_data << 5) ;
 
 wire [6:0] A_3seg7_pre;
@@ -99,22 +130,21 @@ hex_to_7seg ht71b ((data >> shift) >> 20, B_1seg7_pre);
 hex_to_7seg ht72b ((data >> shift) >> 24, B_2seg7_pre);
 hex_to_7seg ht73b ((data >> shift) >> 28, B_3seg7_pre);
 
-assign A_0seg7 = A_0seg7_pre;
-assign A_1seg7 = A_1seg7_pre;
-assign A_2seg7 = A_2seg7_pre;
-assign A_3seg7 = A_3seg7_pre;
+assign A_0seg7 = ((pos == 0) & (~see & set_on))? ~7'b0 : A_0seg7_pre;
+assign A_1seg7 = ((pos == 1) & (~see & set_on))? ~7'b0 :A_1seg7_pre;
+assign A_2seg7 = ((pos == 2) & (~see & set_on))? ~7'b0 :A_2seg7_pre;
+assign A_3seg7 = ((pos == 3) & (~see & set_on))? ~7'b0 :A_3seg7_pre;
 
-assign B_0seg7 = B_0seg7_pre;
-assign B_1seg7 = B_1seg7_pre;
-assign B_2seg7 = B_2seg7_pre;
-assign B_3seg7 = B_3seg7_pre;
+assign B_0seg7 = ((pos == 4) & (~see & set_on))? ~7'b0 :B_0seg7_pre;
+assign B_1seg7 = ((pos == 5) & (~see & set_on))? ~7'b0 :B_1seg7_pre;
+assign B_2seg7 = ((pos == 6) & (~see & set_on))? ~7'b0 :B_2seg7_pre;
+assign B_3seg7 = ((pos == 7) & (~see & set_on))? ~7'b0 :B_3seg7_pre;
 
 //===================================
 
 always @(posedge clk) begin
     if(~reset) begin
         data_out <= 128'b0;
-        key      <= 128'b0;
     end
 end
 
