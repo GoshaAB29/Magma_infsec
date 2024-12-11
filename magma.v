@@ -11,9 +11,9 @@ module magma (
     // Внутренние регистры и провода
     reg  [31:0] left, right;           // Левый и правый 32-битные блоки
     wire [31:0] round_keys [0:31];     // Раундовые ключи
-    reg  [5:0]  round;                  // номер текущего раунда (0-31)
+    reg  [5:0]  round;                 // номер текущего раунда (0-31)
     reg  [31:0] temp, s_result;        //
-    //wire [31:0] sbox_output;           // выход S-блоков
+    //wire [31:0] sbox_output;         // выход S-блоков
     reg work;                          // статус работы блока
 
     // провода S-блоков
@@ -67,10 +67,12 @@ module magma (
         endgenerate
 
         always @(posedge clk or negedge reset_)
-            work <= reset_ ? 1'b0 :
-                    start  ? 1'b1 :
-                    done   ? 1'b0 :
-                    work;
+		      if (~reset_)
+					work <= 1'b0;
+				else
+					work <= (start)? 1'b1 :
+							  (done )? 1'b0 :
+							  work;
 
         always @(posedge clk or negedge reset_) begin
             if (~reset_) begin
