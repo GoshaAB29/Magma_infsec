@@ -34,7 +34,7 @@ wire [127:0] data_out;
 
 reg  [255:0] key;
 
-wire [255:0] preset_key = 256'h0123456789abcdef;
+wire [255:0] preset_key = 256'h0xdeda1eda1a1baba1beda1daaa42aa1303ded1c9ef1ed61da4a41bab3da1bed61;
 
 assign revert_led = revert_switch;
 
@@ -125,17 +125,17 @@ else
 end
 //===================================
 
-wire [255:0]key_f;
+wire [255:0] key_f;
 
-assign key_f[0:31]    = (revert_switch)? key[224:255]: key[0:31];
-assign key_f[32:63]   = (revert_switch)? key[192:223]: key[32:63];
-assign key_f[64:95]   = (revert_switch)? key[160:191]: key[64:95];
-assign key_f[96:127]  = (revert_switch)? key[128:159]: key[96:127];
+assign key_f[31:0]    = (revert_switch)? key[255:224] : key[31 :  0];
+assign key_f[63:32]   = (revert_switch)? key[223:192] : key[63 : 32];
+assign key_f[95:64]   = (revert_switch)? key[191:160] : key[95 : 64];
+assign key_f[127:96]  = (revert_switch)? key[159:128] : key[127: 96];
 
-assign key_f[128:159] = (revert_switch)? key[96:127] : key[128:159];
-assign key_f[160:191] = (revert_switch)? key[64:95]  : key[160:191];
-assign key_f[192:223] = (revert_switch)? key[32:63]  : key[192:223];
-assign key_f[224:255] = (revert_switch)? key[0:31]   : key[224:255];
+assign key_f[159:128] = (revert_switch)? key[127: 96] : key[159:128];
+assign key_f[191:160] = (revert_switch)? key[95 : 64] : key[191:160];
+assign key_f[223:192] = (revert_switch)? key[63 : 32] : key[223:192];
+assign key_f[255:224] = (revert_switch)? key[31 :  0] : key[255:224];
 
 //MAGMA===================================
 wire m_start = set;
@@ -145,9 +145,9 @@ magma MAGMA (
     .reset_   ( reset      ),         //
     .start    ( m_start    ),         // старт
     .data_in  ( data_in    ),         // входные данные
-    .key      ( key_f      ),         // 256-битный ключ // TODO
+    .key      ( key_f      ),         // 256-битный ключ
 
-    .data_out ( data_out   ),         // шифр
+    .data_out ( data_out   ),         // шифр либо расшифровка
     .done     ( magma_done )          // финиш
 );
 
@@ -191,26 +191,26 @@ endmodule
 
 module hex_to_7seg
 (
-    input wire [3:0] hex,
- output wire [6:0] seg7
+    input wire  [3:0] hex,
+    output wire [6:0] seg7
 );
 
 assign seg7 = (hex == 4'h0)? ~7'b0_111_111:
-(hex == 4'h1)? ~7'b0_000_110:
-(hex == 4'h2)? ~7'b1_011_011:
-(hex == 4'h3)? ~7'b1_001_111:
-(hex == 4'h4)? ~7'b1_100_110:
-(hex == 4'h5)? ~7'b1_101_101:
-(hex == 4'h6)? ~7'b1_111_101:
-(hex == 4'h7)? ~7'b0_000_111:
-(hex == 4'h8)? ~7'b1_111_111:
-(hex == 4'h9)? ~7'b1_101_111:
-(hex == 4'ha)? ~7'b1_110_111:
-(hex == 4'hb)? ~7'b1_111_100:
-(hex == 4'hc)? ~7'b0_111_001:
-(hex == 4'hd)? ~7'b1_011_110:
-(hex == 4'he)? ~7'b1_111_001:
-(hex == 4'hf)? ~7'b1_110_001:
-~7'b0_000_000;
+              (hex == 4'h1)? ~7'b0_000_110:
+              (hex == 4'h2)? ~7'b1_011_011:
+              (hex == 4'h3)? ~7'b1_001_111:
+              (hex == 4'h4)? ~7'b1_100_110:
+              (hex == 4'h5)? ~7'b1_101_101:
+              (hex == 4'h6)? ~7'b1_111_101:
+              (hex == 4'h7)? ~7'b0_000_111:
+              (hex == 4'h8)? ~7'b1_111_111:
+              (hex == 4'h9)? ~7'b1_101_111:
+              (hex == 4'ha)? ~7'b1_110_111:
+              (hex == 4'hb)? ~7'b1_111_100:
+              (hex == 4'hc)? ~7'b0_111_001:
+              (hex == 4'hd)? ~7'b1_011_110:
+              (hex == 4'he)? ~7'b1_111_001:
+              (hex == 4'hf)? ~7'b1_110_001:
+                             ~7'b0_000_000;
 
 endmodule

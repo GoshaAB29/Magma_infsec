@@ -42,7 +42,7 @@ set_global_assignment -name DEVICE EP4CE115F29C7
 set_global_assignment -name TOP_LEVEL_ENTITY Data_driver
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 21.1.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:59:39  DECEMBER 04, 2024"
-set_global_assignment -name LAST_QUARTUS_VERSION "20.1.1 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "21.1.1 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
@@ -136,4 +136,6 @@ set_location_assignment PIN_AB24 -to status[0]
 set_location_assignment PIN_H17 -to mode_pos_led[2]
 set_location_assignment PIN_J16 -to mode_pos_led[1]
 set_location_assignment PIN_H16 -to mode_pos_led[0]
+set_location_assignment PIN_G21 -to revert_led
+set_location_assignment PIN_AB27 -to revert_switch
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
