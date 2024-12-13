@@ -3,6 +3,8 @@ module Data_driver(
     input wire reset,
     output wire s_led,
 
+    input wire revert_switch,
+    output wire revert_led,
 
     input wire [3:0] data_wire,
     input wire [3:0] gl_pos_data,
@@ -31,6 +33,10 @@ reg  [127:0] data_in;
 wire [127:0] data_out;
 
 reg  [255:0] key;
+
+wire [255:0] preset_key = 256'h0123456789abcdef;
+
+assign revert_led = revert_switch;
 
 wire data_set = status[0];
 wire key_set = ~status[0] & status[1];
@@ -87,8 +93,10 @@ wire [127:0] new_data_in = (data_in & ~mask) | (L_new_data & mask);
 always @(posedge clk) begin
 if(~reset) begin
     data_in <= 128'h0;
-end else if(set & data_set)
-data_in <= new_data_in;
+end else if(set & data_set & set_on)
+    data_in <= new_data_in;
+else if (rigt & ~set_on)
+    data_in <= data_out;
 end
 //===================================
 
@@ -98,8 +106,10 @@ wire [255:0] new_key = (key & ~mask) | (L_new_data & mask);
 always @(posedge clk) begin
 if(~reset) begin
     key <= 256'b0;
-end else if(set & key_set)
-key <= new_key;
+end else if(set & key_set & set_on)
+    key <= new_key;
+else if (left & ~set_on)
+    key <= preset_key;
 end
 //===================================
 
@@ -115,6 +125,17 @@ else
 end
 //===================================
 
+wire [255:0]key_f;
+
+assign key_f[0:31]    = (revert_switch)? key[224:255]: key[0:31];
+assign key_f[32:63]   = (revert_switch)? key[192:223]: key[32:63];
+assign key_f[64:95]   = (revert_switch)? key[160:191]: key[64:95];
+assign key_f[96:127]  = (revert_switch)? key[128:159]: key[96:127];
+
+assign key_f[128:159] = (revert_switch)? key[96:127] : key[128:159];
+assign key_f[160:191] = (revert_switch)? key[64:95]  : key[160:191];
+assign key_f[192:223] = (revert_switch)? key[32:63]  : key[192:223];
+assign key_f[224:255] = (revert_switch)? key[0:31]   : key[224:255];
 
 //MAGMA===================================
 wire m_start = set;
@@ -124,14 +145,14 @@ magma MAGMA (
     .reset_   ( reset      ),         //
     .start    ( m_start    ),         // старт
     .data_in  ( data_in    ),         // входные данные
-    .key      ( key        ),         // 256-битный ключ // TODO
+    .key      ( key_f      ),         // 256-битный ключ // TODO
 
     .data_out ( data_out   ),         // шифр
     .done     ( magma_done )          // финиш
 );
 
 //===================================
-wire [255:0] data = (data_set)? new_data_in: (key_set)? new_key: (data_out_set)? data_out: data_in;
+wire [255:0] data = (data_set)? new_data_in: (key_set & ~revert_switch)? new_key: (data_out_set)? data_out: (key_set & revert_switch)? key_f :data_in;
 wire [64:0] shift = (gl_pos_data << 5) ;
 
 wire [6:0] A_3seg7_pre;
