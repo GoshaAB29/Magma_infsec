@@ -12,7 +12,8 @@ module magma (
     reg  [31:0] left, right;           // Левый и правый 32-битные блоки
     wire [31:0] round_keys [0:31];     // Раундовые ключи
     reg  [5:0]  round;                 // номер текущего раунда (0-31)
-    reg  [31:0] temp, temp_2, s_result;        //
+    reg  [31:0] temp;                  // первая и вторая стадии алгоритма Магмы
+	 reg  [1:0] cntrl;                  // контроль перехода стадий алгоритма Магмы
     //wire [31:0] sbox_output;         // выход S-блоков
     reg work;                          // статус работы блока
 
@@ -67,44 +68,63 @@ module magma (
         endgenerate
 
         always @(posedge clk or negedge reset_)
-		      if (~reset_)
-					work <= 1'b0;
-				else
-					work <= (start)? 1'b1 :
-							  (done )? 1'b0 :
-							  work;
+            if (~reset_)
+                work <= 1'b0;
+            else
+                work <= (start)? 1'b1 :
+                        (done )? 1'b0 :
+                        work;
 
         always @(posedge clk or negedge reset_) begin
             if (~reset_) begin
-                left  <= 0;
-                right <= 0;
-                round <= 0;
-                done  <= 0;
-            end else if (work) begin
+                left    <= 1'b0;
+                right   <= 1'b0;
+                done    <= 1'b0;
+
+                round <= 1'b0;
+                cntrl <= 1'b0;
+            end else
+            if (work) begin
                 if (round == 0) begin
                     left  <= data_in[63:32];
                     right <= data_in[31:0];
+
+                    done  <= 1'b0;
+
                     round <= 1;
-                    done  <= 0;
+                    cntrl <= 0;
+
                 end else if (round <= 32) begin
-                    temp <= right + round_keys[round - 1];
 
-                    temp_2 <= {SBOX[7][temp[28+:4]], SBOX[6][temp[24+:4]],
-                                 SBOX[5][temp[20+:4]], SBOX[4][temp[16+:4]],
-                                 SBOX[3][temp[12+:4]], SBOX[2][temp[8+:4]],
-                                 SBOX[1][temp[4+:4]],  SBOX[0][temp[0+:4]]};
+                    cntrl <= (cntrl < 2)? cntrl + 1 : 0;
 
-                    s_result <= {temp_2[21:0], temp_2[31:22]}; // циклический сдвиг на 11 бит
-                    right <= left ^ s_result;
-                    left <= right;
-                    round <= round + 1;
-                end else begin
+                    if (cntrl == 0) begin
+                        temp <= right + round_keys[round - 1];
+                    end
+
+                    else if (cntrl == 1) begin
+                        temp <= {SBOX[7][temp[28+:4]], SBOX[6][temp[24+:4]],
+                                SBOX[5][temp[20+:4]], SBOX[4][temp[16+:4]],
+                                SBOX[3][temp[12+:4]], SBOX[2][temp[8+:4]],
+                                SBOX[1][temp[4+:4]],  SBOX[0][temp[0+:4]]};
+                    end
+
+                    else if (cntrl == 2) begin
+                        right <= left ^ {temp[21:0], temp[31:22]};
+                        left  <= right;
+                        round <= round + 1;
+                    end
+                end
+
+                else begin
                     data_out <= {right, left};
                     done <= 1;
                 end
             end 
-				else
-					round <= 0;
+
+            else
+                round <= 0;
+
         end
 
 endmodule
