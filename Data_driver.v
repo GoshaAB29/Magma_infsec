@@ -12,6 +12,7 @@ module Data_driver(
     input wire [2:0] status,
 
     input wire [2:0] bat,
+    input wire       encr_decr,
 
     output wire [3:0] Gr_pos_led,
     output wire [2:0] mode_pos_led,
@@ -123,36 +124,24 @@ if(~reset)
 else
     blinker <= blinker + 1;
 end
-//===================================
-
-wire [255:0] key_f;
-
-assign key_f[31:0]    = (revert_switch)? key[255:224] : key[31 :  0];
-assign key_f[63:32]   = (revert_switch)? key[223:192] : key[63 : 32];
-assign key_f[95:64]   = (revert_switch)? key[191:160] : key[95 : 64];
-assign key_f[127:96]  = (revert_switch)? key[159:128] : key[127: 96];
-
-assign key_f[159:128] = (revert_switch)? key[127: 96] : key[159:128];
-assign key_f[191:160] = (revert_switch)? key[95 : 64] : key[191:160];
-assign key_f[223:192] = (revert_switch)? key[63 : 32] : key[223:192];
-assign key_f[255:224] = (revert_switch)? key[31 :  0] : key[255:224];
 
 //MAGMA===================================
 wire m_start = set;
 
 magma MAGMA (
-    .clk      ( clk        ),         //
-    .reset_   ( reset      ),         //
-    .start    ( m_start    ),         // старт
-    .data_in  ( data_in    ),         // входные данные
-    .key      ( key_f      ),         // 256-битный ключ
+    .clk       ( clk        ),         //
+    .reset_    ( reset      ),         //
+    .start     ( m_start    ),         // старт
+    .data_in   ( data_in    ),         // входные данные
+    .key       ( key        ),         // 256-битный ключ
+    .encr_decr ( encr_decr  ),          // выбор режима шифрования
 
-    .data_out ( data_out   ),         // шифр либо расшифровка
-    .done     ( magma_done )          // финиш
+    .data_out  ( data_out   ),         // шифр
+    .done      ( magma_done )          // финиш
 );
 
 //===================================
-wire [255:0] data = (data_set)? new_data_in: (key_set & ~revert_switch)? new_key: (data_out_set)? data_out: (key_set & revert_switch)? key_f :data_in;
+wire [255:0] data = (data_set)? new_data_in: (key_set & ~revert_switch)? new_key: (data_out_set)? data_out: (key_set & revert_switch)? key :data_in;
 wire [64:0] shift = (gl_pos_data << 5) ;
 
 wire [6:0] A_3seg7_pre;
