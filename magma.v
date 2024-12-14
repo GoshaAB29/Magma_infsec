@@ -4,22 +4,56 @@ module magma (
     input wire          start,         // старт
     input wire [63:0]   data_in,       // входные данные
     input wire [255:0]  key,           // 256-битный ключ
+    input wire          encr_decr,     // выбор шифрования или расшифрования
+
     output reg [63:0]   data_out,      // шифр
     output reg          done           // финиш
 );
+
+//---------------------------------------------------------------------------------------------------------------------------------------//
 
     // Внутренние регистры и провода
     reg  [31:0] left, right;           // Левый и правый 32-битные блоки
     wire [31:0] round_keys [0:31];     // Раундовые ключи
     reg  [5:0]  round;                 // номер текущего раунда (0-31)
     reg  [31:0] temp;                  // первая и вторая стадии алгоритма Магмы
-	 reg  [1:0] cntrl;                  // контроль перехода стадий алгоритма Магмы
-    //wire [31:0] sbox_output;         // выход S-блоков
+    reg  [1:0] cntrl;                  // контроль перехода стадий алгоритма Магмы
+
+    reg done_r, done_rr;               // для контроля падения done
+
     reg work;                          // статус работы блока
 
-    // провода S-блоков
-    //wire [31 : 0] apply_sbox;
-    //wire [3  : 0] nibble [7 : 0];
+//---------------------------------------------------------------------------------------------------------------------------------------//
+    reg en_de;             // выбор режима работы блока Магмы
+
+    always @(posedge clk or negedge reset_)
+        if (~reset_)
+            en_de <= 1'b1; // по умолчанию шифруем
+        else
+            en_de <= (start)? encr_decr : en_de;
+
+//---------------------------------------------------------------------------------------------------------------------------------------//
+        wire [0:3] T [7 : 0];
+
+//         assign T0 = temp[3:0];
+//         assign T1 = temp[7:4];
+//         assign T2 = temp[11:8];
+//         assign T3 = temp[15:12];
+//         assign T4 = temp[19:16];
+//         assign T5 = temp[23:20];
+//         assign T6 = temp[27:24];
+//         assign T7 = temp[31:28];
+
+         genvar j;
+
+         generate
+         for (j = 0; j < 8; j = j + 1) begin : T_block                    // номера переходов в таблице замен
+             assign T[j] = temp[4 * j + 3 : 4 * j];
+         end
+         endgenerate
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------//
 
     // инициализация S-блоков
     wire [3:0] SBOX [0:7][0:15];
@@ -56,61 +90,85 @@ module magma (
             SBOX[7][8],SBOX[7][9],SBOX[7][10],SBOX[7][11],SBOX[7][12],SBOX[7][13],SBOX[7][14],SBOX[7][15]}
         =   {4'd1, 4'd7, 4'd14, 4'd13, 4'd0, 4'd5, 4'd8, 4'd3, 4'd4, 4'd15, 4'd10, 4'd6, 4'd9, 4'd12, 4'd11, 4'd2};
 
+//---------------------------------------------------------------------------------------------------------------------------------------//
         genvar i;
+
         generate
-            for (i = 0; i < 32; i = i + 1) begin : gen_round_keys
-                if (i < 24) begin
-                    assign round_keys[i] = key[255 - (i % 8) * 32 -: 32];
-                end else begin
-                    assign round_keys[i] = key[255 - (7 - i % 8) * 32 -: 32];
-                end
+            for (i = 0; i < 8; i = i + 1) begin : gen_round_keys_1                     // первый октет
+                    assign round_keys[i] = key[255 - (i % 8) * 32 -: 32];              //
             end
         endgenerate
+
+        generate
+            for (i = 8; i < 24; i = i + 1) begin : gen_round_keys_23                   // второй и третий октеты
+                    assign round_keys[i] = (en_de)? key[255 - (i % 8) * 32 -: 32] :    //
+                                                    key[255 - (7 - i % 8) * 32 -: 32]; //
+            end
+        endgenerate
+
+        generate
+            for (i = 24; i < 32; i = i + 1) begin : gen_round_keys_4                   // четвертый октет
+                    assign round_keys[i] = key[255 - (7 - i % 8) * 32 -: 32];          //
+            end
+        endgenerate
+//---------------------------------------------------------------------------------------------------------------------------------------//
+
+        always @(posedge clk or negedge reset_)
+            if (~reset_)
+                {done, done_r} <= 2'b0;
+            else
+                {done, done_r} <= (start)? 2'b0 : {done_r & done_rr, done_rr};
 
         always @(posedge clk or negedge reset_)
             if (~reset_)
                 work <= 1'b0;
             else
-                work <= (start)? 1'b1 :
-                        (done )? 1'b0 :
+                work <= (start  )? 1'b1 :
+                        (done & done_r)? 1'b0 :
                         work;
 
         always @(posedge clk or negedge reset_) begin
             if (~reset_) begin
                 left    <= 1'b0;
                 right   <= 1'b0;
-                done    <= 1'b0;
+                done_rr <= 1'b0;
+
+                temp    <= 64'b0;
 
                 round <= 1'b0;
                 cntrl <= 1'b0;
             end else
             if (work) begin
                 if (round == 0) begin
-                    left  <= data_in[63:32];
-                    right <= data_in[31:0];
+                    left   <= data_in[63:32];
+                    right  <= data_in[31:0];
 
-                    done  <= 1'b0;
+                    done_rr <= 1'b0;
 
-                    round <= 1;
-                    cntrl <= 0;
+                    round  <= 1;
+                    cntrl  <= 0;
 
                 end else if (round <= 32) begin
 
-                    cntrl <= (cntrl < 2)? cntrl + 1 : 0;
+                    cntrl  <= (cntrl < 3)? cntrl + 1 : 0;
 
                     if (cntrl == 0) begin
                         temp <= right + round_keys[round - 1];
                     end
 
                     else if (cntrl == 1) begin
-                        temp <= {SBOX[7][temp[28+:4]], SBOX[6][temp[24+:4]],
-                                SBOX[5][temp[20+:4]], SBOX[4][temp[16+:4]],
-                                SBOX[3][temp[12+:4]], SBOX[2][temp[8+:4]],
-                                SBOX[1][temp[4+:4]],  SBOX[0][temp[0+:4]]};
+                        temp <= {SBOX[7][T[7]], SBOX[6][T[6]],
+                                 SBOX[5][T[5]], SBOX[4][T[4]],
+                                 SBOX[3][T[3]], SBOX[2][T[2]],
+                                 SBOX[1][T[1]], SBOX[0][T[0]]};
                     end
 
                     else if (cntrl == 2) begin
-                        right <= left ^ {temp[21:0], temp[31:22]};
+                        temp <= {temp[20:0], temp[31:21]};
+                    end
+
+                    else if (cntrl == 3) begin
+                        right <= left ^ temp;
                         left  <= right;
                         round <= round + 1;
                     end
@@ -118,7 +176,7 @@ module magma (
 
                 else begin
                     data_out <= {right, left};
-                    done <= 1;
+                    done_rr <= 1'b1;
                 end
             end 
 
