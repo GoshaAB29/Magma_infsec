@@ -35,24 +35,14 @@ wire [127:0] data_out;
 
 reg  [255:0] key;
 
-wire [255:0] preset_key = 256'h0xdeda1eda1a1baba1beda1daaa42aa1303ded1c9ef1ed61da4a41bab3da1bed61;
+wire [255:0] preset_key [0:1];
 
-assign revert_led = revert_switch;
+assign preset_key [0] = 256'hdeda1eda1a1baba1beda1daaa42aa1303ded1c9ef1ed61da4a41bab3da1bed61;
+assign preset_key [1] = 256'hffeeddccbbaa99887766554433221100f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff;
 
-wire data_set = status[0];
-wire key_set = ~status[0] & status[1];
-wire data_out_set = ~status[0] & ~status[1] & status[2];
+reg preset_counter;
 
 wire set_on = data_set | key_set;
-
-assign mode_pos_led[0] = ~key_set & ~ data_out_set;
-assign mode_pos_led[1] = key_set;
-assign mode_pos_led[2] = data_out_set;
-
-assign Gr_pos_led = (key_set)? gl_pos_data: 4'b1 << gl_pos_data;
-
-//Bat_drv============================
-wire [2:0] push;
 
 reg [2:0] but_r;
 reg [2:0] but_rr;
@@ -62,6 +52,28 @@ assign push = but_rr & ~but_r;
 wire left = push[0];
 wire rigt = push[1];
 wire set  = push[2];
+
+always @(posedge clk) begin
+	if(~reset)
+		preset_counter <= 0;
+	else if(~set_on & left)
+		preset_counter <= preset_counter + 1;
+end
+
+assign revert_led = revert_switch;
+
+wire data_set = status[0];
+wire key_set = ~status[0] & status[1];
+wire data_out_set = ~status[0] & ~status[1] & status[2];
+
+assign mode_pos_led[0] = ~key_set & ~ data_out_set;
+assign mode_pos_led[1] = key_set;
+assign mode_pos_led[2] = data_out_set;
+
+assign Gr_pos_led = (key_set)? gl_pos_data: 4'b1 << gl_pos_data;
+
+//Bat_drv============================
+wire [2:0] push;
 
 always @(posedge clk) begin
 but_r <= bat;
@@ -110,7 +122,7 @@ if(~reset) begin
 end else if(set & key_set & set_on)
     key <= new_key;
 else if (left & ~set_on)
-    key <= preset_key;
+    key <= preset_key[preset_counter];
 end
 //===================================
 
@@ -126,7 +138,29 @@ else
 end
 
 //MAGMA===================================
-wire m_start = set;
+wire m_start = set & ~set_on;
+wire pre_magma_done;
+
+reg magma_done_reg;
+reg done_gaytway;
+
+assign magma_done = magma_done_reg;
+
+always @(posedge clk) begin
+	if(~reset) begin
+		magma_done_reg <= 0;
+		done_gaytway 	<= 0;
+	end else if(m_start) begin
+		done_gaytway 	<= 1;
+		magma_done_reg <= 0;
+	end else if(pre_magma_done & done_gaytway)begin
+		done_gaytway 	<= 0;
+		magma_done_reg <= 1;
+	end else if((set & set_on) |(~set_on & (left | rigt)))begin
+		magma_done_reg <= 0;
+	end
+	
+end
 
 magma MAGMA (
     .clk       ( clk        ),         //
@@ -134,10 +168,10 @@ magma MAGMA (
     .start     ( m_start    ),         // старт
     .data_in   ( data_in    ),         // входные данные
     .key       ( key        ),         // 256-битный ключ
-    .encr_decr ( encr_decr  ),          // выбор режима шифрования
+    .encr_decr ( revert_switch ),          // выбор режима шифрования
 
     .data_out  ( data_out   ),         // шифр
-    .done      ( magma_done )          // финиш
+    .done      ( pre_magma_done )          // финиш
 );
 
 //===================================
